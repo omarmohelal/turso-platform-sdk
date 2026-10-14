@@ -1,6 +1,15 @@
 {
+  "NAME": "TURSO-PLATFORM",
+  "Name": "TursoPlatform",
   "def": "turso-openapi.json",
   "main": {
+    "api": {
+      "entity": {},
+      "guide": {}
+    },
+    "custom": {
+      "plurals": {}
+    },
     "def": {
       "desc": ""
     },
@@ -6500,5 +6509,8 @@
     }
   },
   "name": "turso-platform",
+  "name-": "turso-platform",
+  "name_": "turso_platform",
+  "name__orig": "turso-platform",
   "origin": "voxgig-sdk"
 }
