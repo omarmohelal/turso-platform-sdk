@@ -231,13 +231,20 @@ come back empty.
 
 ## Human time and how I worked
 
-An AI coding agent (Claude Code) ran the generator and drafted this report and the README,
-following the steps in voxgig.com/sdk/agents. I chose the API, set the scope and the safety rules
-(read-only live checks, nothing published without my approval), and reviewed the findings.
+I worked with an AI coding agent (Claude Code), following the steps in voxgig.com/sdk/agents.
+
+What I did: explained the task and its constraints, compared candidate APIs and approaches with the
+agent and chose Turso, reviewed the spec and cut its scope down to this time box, set the safety
+rules (read-only live checks, nothing published without my approval), created the Turso account
+and Platform API token with the Turso CLI in WSL, and reviewed the results.
+
+What the agent did: the research, running the generator, the workarounds and corrections, the
+example and its tests, and the first drafts of the README and this report.
 
 | | Minutes |
 |---|---|
-| My active time (reading the brief, choosing the API, decisions and reviews, Turso token) | **TBD (Omar)** |
+| My active time, all of the above (my estimate) | about 20 |
 | Agent runtime, unattended | research: two agents in parallel, 12.5 and 22.5 min; build, tests and report: about 45 min (13:27–14:12) |
 
-The 30-minute limit: **TBD (Omar)**.
+That is inside the 30-minute limit. Elapsed time from the brief to this report was about two hours,
+most of it the agent working while I was away.
