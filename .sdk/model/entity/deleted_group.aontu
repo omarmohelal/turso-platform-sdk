@@ -1,0 +1,123 @@
+# Entity: deleted_group
+
+main: kit: entity: deleted_group: {
+
+  alias: field: {}
+
+  fields: {
+    cascade_databases: {
+      h: "Cascade Databases"
+      n: "cascade_databases"
+      r: false
+      sh: "The number of member databases that restoring the group would bring back with it."
+      t: "`$INTEGER`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "When the group was deleted."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The group name."
+      t: "`$STRING`"
+    }
+    uuid: {
+      fo: "uuid"
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The group UUID."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "deleted_group"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v3/organizations/{organizationId}/deleted-groups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v3/organizations/{organizationId}/deleted-groups"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              organizationId: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v3"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "deleted-groups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.groups`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

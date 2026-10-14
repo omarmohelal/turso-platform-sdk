@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "organization_plan": {
+      "ORGANIZATION_PLAN00": {
+        "name": "s28",
+        "price": "s29",
+        "prices": [],
+        "quotas": {},
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION_PLAN01": {
+        "name": "s50",
+        "price": "s51",
+        "prices": [],
+        "quotas": {},
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION_PLAN02": {
+        "name": "s78",
+        "price": "s79",
+        "prices": [],
+        "quotas": {},
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "organization_plan": {
+      "organization_plan_ref01": {
+        "name": "sa0",
+        "price": "sa1",
+        "prices": [],
+        "quotas": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/plans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

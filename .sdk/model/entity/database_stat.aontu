@@ -1,0 +1,112 @@
+# Entity: database_stat
+
+main: kit: entity: database_stat: {
+
+  alias: field: {}
+
+  fields: {
+    query: {
+      h: "Query"
+      n: "query"
+      r: false
+      sh: "A string representing the SQL query executed."
+      t: "`$STRING`"
+    }
+    rows_read: {
+      h: "Rows Read"
+      n: "rows_read"
+      r: false
+      sh: "An integer indicating the number of rows read by the query, which reflects the volume of data the query processed from the database."
+      t: "`$INTEGER`"
+    }
+    rows_written: {
+      h: "Rows Written"
+      n: "rows_written"
+      r: false
+      sh: "An integer indicating the number of rows written (inserted, updated, or deleted) by the query, which reflects the impact of the query on the database data."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "database_stat"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/stats"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/stats"
+          q: {
+            exist: [
+              "database_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "stats"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.top_queries`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.database")]
+  ]
+
+}

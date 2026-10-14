@@ -1,0 +1,222 @@
+# Entity: database_configuration
+
+main: kit: entity: database_configuration: {
+
+  alias: field: {}
+
+  fields: {
+    allow_attach: {
+      de: true
+      h: "Allow Attach"
+      n: "allow_attach"
+      r: false
+      sh: "Allow or disallow attaching databases to the current database."
+      t: "`$BOOLEAN`"
+    }
+    allowed_aws_vpc_ids: {
+      h: "Allowed Aws Vpc Ids"
+      n: "allowed_aws_vpc_ids"
+      r: false
+      sh: "List of allowed AWS VPC endpoint IDs."
+      t: "`$ARRAY`"
+    }
+    allowed_ips: {
+      h: "Allowed Ips"
+      n: "allowed_ips"
+      r: false
+      sh: "List of allowed IP addresses and CIDR blocks."
+      t: "`$ARRAY`"
+    }
+    block_reads: {
+      h: "Block Reads"
+      n: "block_reads"
+      r: false
+      sh: "The current status for blocked reads."
+      t: "`$BOOLEAN`"
+    }
+    block_writes: {
+      h: "Block Writes"
+      n: "block_writes"
+      r: false
+      sh: "The current status for blocked writes."
+      t: "`$BOOLEAN`"
+    }
+    delete_protection: {
+      h: "Delete Protection"
+      n: "delete_protection"
+      r: false
+      sh: "Prevent the database from being deleted."
+      t: "`$BOOLEAN`"
+    }
+    size_limit: {
+      h: "Size Limit"
+      n: "size_limit"
+      r: false
+      sh: "The maximum size of the database in bytes."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "database_configuration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/configuration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration"
+          q: {
+            exist: [
+              "database_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "configuration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "allow_attach"
+            "allowed_aws_vpc_ids"
+            "allowed_ips"
+            "block_reads"
+            "block_writes"
+            "delete_protection"
+            "size_limit"
+          ]
+          co: {
+            id: "PATCH /v1/organizations/{organizationSlug}/databases/{databaseName}/configuration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration"
+          q: {
+            exist: [
+              "database_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "configuration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.database")]
+  ]
+
+}

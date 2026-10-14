@@ -1,0 +1,57 @@
+# BasicLocationFlow
+
+main: kit: flow: BasicLocationFlow:
+{
+  entity: "location",
+  kind: "basic",
+  name: "BasicLocationFlow",
+  step: [
+    {
+      i: {
+        ref: "location_ref01"
+      }
+
+      m: {
+        group_name: "group_name01",
+        location: "location01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "location_ref01",
+        srcdatavar: "location_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-location_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "location_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        group_name: "group_name01",
+        id: "location01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicLocationFlow"
+}

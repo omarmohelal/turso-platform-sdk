@@ -1,0 +1,603 @@
+# Entity: database
+
+main: kit: entity: database: {
+
+  alias: field: {}
+
+  fields: {
+    DbId: {
+      fo: "uuid"
+      h: "Db Id"
+      n: "DbId"
+      r: false
+      sh: "The database universal unique identifier (UUID)."
+      t: "`$STRING`"
+    }
+    Hostname: {
+      h: "Hostname"
+      n: "Hostname"
+      r: false
+      sh: "The DNS hostname used for client libSQL and HTTP connections."
+      t: "`$STRING`"
+    }
+    Name: {
+      h: "Name"
+      n: "Name"
+      r: false
+      sh: "The database name, **unique** across your organization."
+      t: "`$STRING`"
+    }
+    block_reads: {
+      h: "Block Reads"
+      n: "block_reads"
+      r: false
+      sh: "The current status for blocked reads."
+      t: "`$BOOLEAN`"
+    }
+    block_writes: {
+      h: "Block Writes"
+      n: "block_writes"
+      r: false
+      sh: "The current status for blocked writes."
+      t: "`$BOOLEAN`"
+    }
+    delete_protection: {
+      h: "Delete Protection"
+      n: "delete_protection"
+      r: false
+      sh: "The current status for delete protection."
+      t: "`$BOOLEAN`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "When the database was deleted."
+      t: "`$STRING`"
+    }
+    group: {
+      h: "Group"
+      n: "group"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The name of the group the database belongs to."
+      t: "`$STRING`"
+    }
+    group_deleted_at: {
+      fo: "date-time"
+      h: "Group Deleted At"
+      n: "group_deleted_at"
+      r: false
+      sh: "Set when the database's group was deleted with it."
+      t: "`$STRING`"
+    }
+    group_id: {
+      fo: "uuid"
+      h: "Group Id"
+      n: "group_id"
+      r: false
+      sh: "The UUID of the group the database belonged to."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the new database."
+      t: "`$STRING`"
+    }
+    organization_id: {
+      fo: "uuid"
+      h: "Organization Id"
+      n: "organization_id"
+      r: false
+      sh: "The UUID of the organization."
+      t: "`$STRING`"
+    }
+    parent: {
+      h: "Parent"
+      n: "parent"
+      r: false
+      t: "`$OBJECT`"
+    }
+    primaryRegion: {
+      h: "Primary Region"
+      n: "primaryRegion"
+      r: false
+      sh: "The primary region location code the group the database belongs to."
+      t: "`$STRING`"
+    }
+    regions: {
+      de: true
+      h: "Regions"
+      n: "regions"
+      r: false
+      sh: "A list of regions for the group the database belongs to."
+      t: "`$ARRAY`"
+    }
+    remote_encryption: {
+      h: "Remote Encryption"
+      n: "remote_encryption"
+      r: false
+      sh: "Encryption configuration for the database."
+      t: "`$OBJECT`"
+    }
+    seed: {
+      h: "Seed"
+      n: "seed"
+      r: false
+      t: "`$OBJECT`"
+    }
+    size_limit: {
+      h: "Size Limit"
+      n: "size_limit"
+      r: false
+      sh: "The maximum size of the database in bytes."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "database"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "name"
+          ]
+          co: {
+            id: "POST /v3/organizations/{organizationId}/databases/{databaseId}/restore"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "databaseId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v3/organizations/{organizationId}/databases/{databaseId}/restore"
+          q: {
+            "$action": "restore"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseId: "id"
+              organizationId: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v3"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "restore"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.database`"
+          }
+        }
+        {
+          bf: [
+            "group"
+            "name"
+            "remote_encryption"
+            "seed"
+            "size_limit"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/databases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/databases"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.database`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v3/organizations/{organizationId}/databases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "deleted"
+                or: "deleted"
+                r: true
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v3/organizations/{organizationId}/databases"
+          q: {
+            exist: [
+              "deleted"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              organizationId: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v3"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.databases`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/databases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "group"
+                or: "group"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "parent"
+                or: "parent"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "schema"
+                or: "schema"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/databases"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.databases`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/databases/{databaseName}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}"
+          q: {
+            exist: [
+              "id"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "id"
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.database`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/organizations/{organizationSlug}/databases/{databaseName}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}"
+          q: {
+            exist: [
+              "id"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "id"
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

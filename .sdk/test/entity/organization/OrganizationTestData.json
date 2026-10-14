@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "organization": {
+      "ORGANIZATION00": {
+        "blocked_reads": true,
+        "blocked_writes": false,
+        "id": "ORGANIZATION00",
+        "name": "s7b",
+        "overages": true,
+        "plan_id": "PLAN01",
+        "plan_timeline": "s7e",
+        "platform": "s7f",
+        "require_mfa": true,
+        "restore_enabled": false,
+        "slug": "s82",
+        "type": "s83",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION01": {
+        "blocked_reads": true,
+        "blocked_writes": false,
+        "id": "ORGANIZATION01",
+        "name": "sf3",
+        "overages": true,
+        "plan_id": "PLAN01",
+        "plan_timeline": "sf6",
+        "platform": "sf7",
+        "require_mfa": true,
+        "restore_enabled": false,
+        "slug": "sfa",
+        "type": "sfb",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION02": {
+        "blocked_reads": true,
+        "blocked_writes": false,
+        "id": "ORGANIZATION02",
+        "name": "s16b",
+        "overages": true,
+        "plan_id": "PLAN01",
+        "plan_timeline": "s16e",
+        "platform": "s16f",
+        "require_mfa": true,
+        "restore_enabled": false,
+        "slug": "s172",
+        "type": "s173",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "organization": {
+      "organization_ref01": {
+        "blocked_reads": true,
+        "blocked_writes": false,
+        "name": "s1e3",
+        "overages": true,
+        "plan_id": "PLAN01",
+        "plan_timeline": "s1e6",
+        "platform": "s1e7",
+        "require_mfa": true,
+        "restore_enabled": false,
+        "slug": "s1ea",
+        "type": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/organizations/{organizationSlug}/invites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v1/organizations/{organizationSlug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

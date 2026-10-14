@@ -1,0 +1,26 @@
+# BasicDeletedGroupFlow
+
+main: kit: flow: BasicDeletedGroupFlow:
+{
+  entity: "deleted_group",
+  kind: "basic",
+  name: "BasicDeletedGroupFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deleted_group_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeletedGroupFlow"
+}

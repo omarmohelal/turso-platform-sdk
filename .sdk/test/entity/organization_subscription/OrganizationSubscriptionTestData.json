@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "organization_subscription": {
+      "ORGANIZATION_SUBSCRIPTION00": {
+        "name": "s28",
+        "overages": false,
+        "plan": "s2a",
+        "timeline": "s2b",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_SUBSCRIPTION00"
+      },
+      "ORGANIZATION_SUBSCRIPTION01": {
+        "name": "s50",
+        "overages": false,
+        "plan": "s52",
+        "timeline": "s53",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_SUBSCRIPTION01"
+      },
+      "ORGANIZATION_SUBSCRIPTION02": {
+        "name": "s78",
+        "overages": false,
+        "plan": "s7a",
+        "timeline": "s7b",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_SUBSCRIPTION02"
+      }
+    }
+  },
+  "new": {
+    "organization_subscription": {
+      "organization_subscription_ref01": {
+        "name": "sa0",
+        "overages": false,
+        "plan": "sa2",
+        "timeline": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/subscription": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

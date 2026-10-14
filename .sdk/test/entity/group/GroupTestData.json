@@ -1,0 +1,104 @@
+{
+  "existing": {
+    "group": {
+      "GROUP00": {
+        "delete_protection": true,
+        "extensions": "s5b",
+        "id": "GROUP00",
+        "location": "s5d",
+        "locations": [],
+        "name": "s5f",
+        "primary": "s60",
+        "uuid": "s61",
+        "version": "s62",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "GROUP01": {
+        "delete_protection": true,
+        "extensions": "sb5",
+        "id": "GROUP01",
+        "location": "sb7",
+        "locations": [],
+        "name": "sb9",
+        "primary": "sba",
+        "uuid": "sbb",
+        "version": "sbc",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "GROUP02": {
+        "delete_protection": true,
+        "extensions": "s10f",
+        "id": "GROUP02",
+        "location": "s111",
+        "locations": [],
+        "name": "s113",
+        "primary": "s114",
+        "uuid": "s115",
+        "version": "s116",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "group": {
+      "group_ref01": {
+        "delete_protection": true,
+        "extensions": "s169",
+        "location": "s16b",
+        "locations": [],
+        "name": "s16d",
+        "primary": "s16e",
+        "uuid": "s16f",
+        "version": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v3/organizations/{organizationId}/groups/{groupId}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/unarchive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/update": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/groups/{groupName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/organizations/{organizationSlug}/groups/{groupName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

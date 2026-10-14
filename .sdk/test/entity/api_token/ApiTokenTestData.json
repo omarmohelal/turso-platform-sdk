@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "api_token": {
+      "API_TOKEN00": {
+        "created_at": "s50",
+        "group": "s51",
+        "id": "API_TOKEN00",
+        "name": "s53",
+        "organization": "s54",
+        "owner": {},
+        "scopes": [],
+        "token": "s57",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "API_TOKEN01": {
+        "created_at": "sa0",
+        "group": "sa1",
+        "id": "API_TOKEN01",
+        "name": "sa3",
+        "organization": "sa4",
+        "owner": {},
+        "scopes": [],
+        "token": "sa7",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "API_TOKEN02": {
+        "created_at": "sf0",
+        "group": "sf1",
+        "id": "API_TOKEN02",
+        "name": "sf3",
+        "organization": "sf4",
+        "owner": {},
+        "scopes": [],
+        "token": "sf7",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "api_token": {
+      "api_token_ref01": {
+        "created_at": "s140",
+        "group": "s141",
+        "name": "s143",
+        "organization": "s144",
+        "owner": {},
+        "scopes": [],
+        "token": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/auth/api-tokens/{tokenName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/api-tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/auth/api-tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/organizations/{organizationSlug}/api-tokens/{tokenId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/auth/api-tokens/{tokenName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

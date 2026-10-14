@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "rotate": {
+      "ROTATE00": {
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "id": "ROTATE00"
+      },
+      "ROTATE01": {
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "id": "ROTATE01"
+      },
+      "ROTATE02": {
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "group_name": "GROUP_NAME01",
+        "id": "ROTATE02"
+      }
+    }
+  },
+  "new": {
+    "rotate": {
+      "rotate_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "instance": {
+      "INSTANCE00": {
+        "hostname": "s3c",
+        "id": "INSTANCE00",
+        "name": "s3e",
+        "region": "s3f",
+        "type": "s40",
+        "uuid": "s41",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "INSTANCE01": {
+        "hostname": "s78",
+        "id": "INSTANCE01",
+        "name": "s7a",
+        "region": "s7b",
+        "type": "s7c",
+        "uuid": "s7d",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "INSTANCE02": {
+        "hostname": "sb4",
+        "id": "INSTANCE02",
+        "name": "sb6",
+        "region": "sb7",
+        "type": "sb8",
+        "uuid": "sb9",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "instance": {
+      "instance_ref01": {
+        "hostname": "sf0",
+        "name": "sf2",
+        "region": "sf3",
+        "type": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

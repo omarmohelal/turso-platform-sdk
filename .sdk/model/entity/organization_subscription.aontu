@@ -1,0 +1,104 @@
+# Entity: organization_subscription
+
+main: kit: entity: organization_subscription: {
+
+  alias: field: {}
+
+  fields: {
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the plan for the current subscription."
+      t: "`$STRING`"
+    }
+    overages: {
+      h: "Overages"
+      n: "overages"
+      r: false
+      sh: "Whether overages are enabled for the organization."
+      t: "`$BOOLEAN`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      r: false
+      sh: "The name of the plan for the current subscription."
+      t: "`$STRING`"
+    }
+    timeline: {
+      h: "Timeline"
+      n: "timeline"
+      r: false
+      sh: "Whether the plan is billed monthly or yearly."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "organization_subscription"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/subscription"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

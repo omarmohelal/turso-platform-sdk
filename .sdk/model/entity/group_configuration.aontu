@@ -1,0 +1,173 @@
+# Entity: group_configuration
+
+main: kit: entity: group_configuration: {
+
+  alias: field: {}
+
+  fields: {
+    delete_protection: {
+      h: "Delete Protection"
+      n: "delete_protection"
+      r: false
+      sh: "Prevent the group from being deleted."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "group_configuration"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/groups/{groupName}/configuration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration"
+          q: {
+            exist: [
+              "group_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "configuration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "delete_protection"
+          ]
+          co: {
+            id: "PATCH /v1/organizations/{organizationSlug}/groups/{groupName}/configuration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration"
+          q: {
+            exist: [
+              "group_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "configuration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.group")]
+  ]
+
+}

@@ -1,0 +1,26 @@
+# BasicOrganizationInvoiceFlow
+
+main: kit: flow: BasicOrganizationInvoiceFlow:
+{
+  entity: "organization_invoice",
+  kind: "basic",
+  name: "BasicOrganizationInvoiceFlow",
+  step: [
+    {
+      m: {
+        organization_slug: "organization_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_invoice_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationInvoiceFlow"
+}

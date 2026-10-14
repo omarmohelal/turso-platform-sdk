@@ -1,0 +1,28 @@
+# BasicValidateFlow
+
+main: kit: flow: BasicValidateFlow:
+{
+  entity: "validate",
+  kind: "basic",
+  name: "BasicValidateFlow",
+  step: [
+    {
+      i: {
+        ref: "validate_ref01",
+        srcdatavar: "validate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-validate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicValidateFlow"
+}

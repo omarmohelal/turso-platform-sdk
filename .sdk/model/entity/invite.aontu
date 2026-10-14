@@ -1,0 +1,175 @@
+# Entity: invite
+
+main: kit: entity: invite: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "The datetime the invite was created in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format."
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "The email of the person invited."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The unique ID for the invite."
+      t: "`$INTEGER`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: false
+      sh: "The assigned role for the invited user."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "invite"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/organizations/{organizationSlug}/invites"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/organizations/{organizationSlug}/invites"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "invites"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.invites`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/organizations/{organizationSlug}/invites/{email}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "iku@turso.tech"
+                k: "param"
+                n: "id"
+                or: "email"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/organizations/{organizationSlug}/invites/{email}"
+          q: {
+            exist: [
+              "id"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              email: "id"
+              organizationSlug: "organization_slug"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "invites"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

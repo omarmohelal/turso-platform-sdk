@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "invite": {
+      "INVITE00": {
+        "created_at": "s28",
+        "email": "s29",
+        "id": "INVITE00",
+        "role": "s2b",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "INVITE01": {
+        "created_at": "s50",
+        "email": "s51",
+        "id": "INVITE01",
+        "role": "s53",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "INVITE02": {
+        "created_at": "s78",
+        "email": "s79",
+        "id": "INVITE02",
+        "role": "s7b",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "invite": {
+      "invite_ref01": {
+        "created_at": "sa0",
+        "email": "sa1",
+        "role": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/organizations/{organizationSlug}/invites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/organizations/{organizationSlug}/invites/{email}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

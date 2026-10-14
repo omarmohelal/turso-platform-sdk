@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "group_configuration": {
+      "GROUP_CONFIGURATION00": {
+        "delete_protection": true,
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GROUP_CONFIGURATION00"
+      },
+      "GROUP_CONFIGURATION01": {
+        "delete_protection": true,
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GROUP_CONFIGURATION01"
+      },
+      "GROUP_CONFIGURATION02": {
+        "delete_protection": true,
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GROUP_CONFIGURATION02"
+      }
+    }
+  },
+  "new": {
+    "group_configuration": {
+      "group_configuration_ref01": {
+        "delete_protection": true
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/groups/{groupName}/configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v1/organizations/{organizationSlug}/groups/{groupName}/configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

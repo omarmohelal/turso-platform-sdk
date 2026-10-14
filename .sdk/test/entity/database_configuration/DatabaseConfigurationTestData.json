@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "database_configuration": {
+      "DATABASE_CONFIGURATION00": {
+        "allow_attach": true,
+        "allowed_aws_vpc_ids": [],
+        "allowed_ips": [],
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "size_limit": "s4c",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DATABASE_CONFIGURATION00"
+      },
+      "DATABASE_CONFIGURATION01": {
+        "allow_attach": true,
+        "allowed_aws_vpc_ids": [],
+        "allowed_ips": [],
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "size_limit": "s92",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DATABASE_CONFIGURATION01"
+      },
+      "DATABASE_CONFIGURATION02": {
+        "allow_attach": true,
+        "allowed_aws_vpc_ids": [],
+        "allowed_ips": [],
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "size_limit": "sd8",
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DATABASE_CONFIGURATION02"
+      }
+    }
+  },
+  "new": {
+    "database_configuration": {
+      "database_configuration_ref01": {
+        "allow_attach": true,
+        "allowed_aws_vpc_ids": [],
+        "allowed_ips": [],
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "size_limit": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v1/organizations/{organizationSlug}/databases/{databaseName}/configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

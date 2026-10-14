@@ -1,0 +1,367 @@
+# Entity: organization
+
+main: kit: entity: organization: {
+
+  alias: field: {}
+
+  fields: {
+    blocked_reads: {
+      h: "Blocked Reads"
+      n: "blocked_reads"
+      r: false
+      sh: "Returns the current status for blocked reads."
+      t: "`$BOOLEAN`"
+    }
+    blocked_writes: {
+      h: "Blocked Writes"
+      n: "blocked_writes"
+      r: false
+      sh: "Returns the current status for blocked writes."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The organization name."
+      t: "`$STRING`"
+    }
+    overages: {
+      h: "Overages"
+      n: "overages"
+      r: false
+      sh: "The name of the organization."
+      t: "`$BOOLEAN`"
+    }
+    plan_id: {
+      h: "Plan Id"
+      n: "plan_id"
+      r: false
+      sh: "The pricing plan identifier this organization is subscribed to."
+      t: "`$STRING`"
+    }
+    plan_timeline: {
+      h: "Plan Timeline"
+      n: "plan_timeline"
+      r: false
+      sh: "The billing cycle for the paid plan, if any."
+      t: "`$STRING`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      sh: "The external platform this organization is managed by."
+      t: "`$STRING`"
+    }
+    require_mfa: {
+      h: "Require Mfa"
+      n: "require_mfa"
+      r: false
+      sh: "Whether all members of the organization are required to have multi-factor authentication enabled."
+      t: "`$BOOLEAN`"
+    }
+    restore_enabled: {
+      h: "Restore Enabled"
+      n: "restore_enabled"
+      r: false
+      sh: "Whether deleted database and group recovery is enabled for the organization."
+      t: "`$BOOLEAN`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      sh: "The organization slug."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of account this organization is."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "organization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "email"
+            "role"
+            "username"
+          ]
+          co: {
+            id: "POST /v2/organizations/{organizationSlug}/invites"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/organizations/{organizationSlug}/invites"
+          q: {
+            "$action": "invite"
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "invites"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.invited`"
+          }
+        }
+        {
+          bf: [
+            "role"
+            "username"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/members"
+          q: {
+            "$action": "member"
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "overages"
+            "require_mfa"
+            "restore_enabled"
+          ]
+          co: {
+            id: "PATCH /v1/organizations/{organizationSlug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v1/organizations/{organizationSlug}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

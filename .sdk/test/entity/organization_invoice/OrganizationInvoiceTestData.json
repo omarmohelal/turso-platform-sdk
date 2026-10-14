@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "organization_invoice": {
+      "ORGANIZATION_INVOICE00": {
+        "amount_due": "s3c",
+        "due_date": "s3d",
+        "invoice_number": "s3e",
+        "invoice_pdf": "s3f",
+        "paid_at": "s40",
+        "payment_failed_at": "s41",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION_INVOICE01": {
+        "amount_due": "s78",
+        "due_date": "s79",
+        "invoice_number": "s7a",
+        "invoice_pdf": "s7b",
+        "paid_at": "s7c",
+        "payment_failed_at": "s7d",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "ORGANIZATION_INVOICE02": {
+        "amount_due": "sb4",
+        "due_date": "sb5",
+        "invoice_number": "sb6",
+        "invoice_pdf": "sb7",
+        "paid_at": "sb8",
+        "payment_failed_at": "sb9",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "organization_invoice": {
+      "organization_invoice_ref01": {
+        "amount_due": "sf0",
+        "due_date": "sf1",
+        "invoice_number": "sf2",
+        "invoice_pdf": "sf3",
+        "paid_at": "sf4",
+        "payment_failed_at": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/invoices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

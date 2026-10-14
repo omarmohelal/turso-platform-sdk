@@ -1,0 +1,157 @@
+# Entity: rotate
+
+main: kit: entity: rotate: {
+
+  alias: field: {}
+
+  name: "rotate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate"
+          q: {
+            exist: [
+              "database_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "rotate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate"
+          q: {
+            exist: [
+              "group_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "rotate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.database")]
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.group")]
+  ]
+
+}

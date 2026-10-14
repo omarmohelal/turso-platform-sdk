@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "member": {
+      "MEMBER00": {
+        "email": "s28",
+        "id": "MEMBER00",
+        "role": "s2a",
+        "username": "s2b",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "MEMBER01": {
+        "email": "s50",
+        "id": "MEMBER01",
+        "role": "s52",
+        "username": "s53",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "MEMBER02": {
+        "email": "s78",
+        "id": "MEMBER02",
+        "role": "s7a",
+        "username": "s7b",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "member": {
+      "member_ref01": {
+        "email": "sa0",
+        "role": "sa2",
+        "username": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/members/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/organizations/{organizationSlug}/members/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v1/organizations/{organizationSlug}/members/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

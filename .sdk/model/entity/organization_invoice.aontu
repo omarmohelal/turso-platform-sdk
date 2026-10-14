@@ -1,0 +1,127 @@
+# Entity: organization_invoice
+
+main: kit: entity: organization_invoice: {
+
+  alias: field: {}
+
+  fields: {
+    amount_due: {
+      h: "Amount Due"
+      n: "amount_due"
+      r: false
+      sh: "The formatted price in USD for the invoice."
+      t: "`$STRING`"
+    }
+    due_date: {
+      h: "Due Date"
+      n: "due_date"
+      r: false
+      sh: "The due date for the invoice."
+      t: "`$STRING`"
+    }
+    invoice_number: {
+      h: "Invoice Number"
+      n: "invoice_number"
+      r: false
+      sh: "The unique ID for the invoice."
+      t: "`$STRING`"
+    }
+    invoice_pdf: {
+      h: "Invoice Pdf"
+      n: "invoice_pdf"
+      r: false
+      sh: "The link to the invoice PDF you can download."
+      t: "`$STRING`"
+    }
+    paid_at: {
+      h: "Paid At"
+      n: "paid_at"
+      r: false
+      sh: "The date the invoice was paid."
+      t: "`$STRING`"
+    }
+    payment_failed_at: {
+      h: "Payment Failed At"
+      n: "payment_failed_at"
+      r: false
+      sh: "The date the invoice payment last failed."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "organization_invoice"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/invoices"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/invoices"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "invoices"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.invoices`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

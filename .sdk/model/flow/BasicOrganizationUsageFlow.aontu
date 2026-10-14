@@ -1,0 +1,32 @@
+# BasicOrganizationUsageFlow
+
+main: kit: flow: BasicOrganizationUsageFlow:
+{
+  entity: "organization_usage",
+  kind: "basic",
+  name: "BasicOrganizationUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_usage_ref01",
+        srcdatavar: "organization_usage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "organization_usage01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationUsageFlow"
+}

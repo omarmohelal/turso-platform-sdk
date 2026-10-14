@@ -1,0 +1,97 @@
+# Entity: organization_usage
+
+main: kit: entity: organization_usage: {
+
+  alias: field: {}
+
+  fields: {
+    databases: {
+      h: "Databases"
+      n: "databases"
+      r: false
+      sh: "The databases for the organization and their usage."
+      t: "`$ARRAY`"
+    }
+    usage: {
+      h: "Usage"
+      n: "usage"
+      r: false
+      sh: "The usage object for the organization."
+      t: "`$OBJECT`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID of the organization."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "organization_usage"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/usage"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

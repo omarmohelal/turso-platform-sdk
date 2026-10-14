@@ -1,0 +1,33 @@
+# BasicDatabaseUsageFlow
+
+main: kit: flow: BasicDatabaseUsageFlow:
+{
+  entity: "database_usage",
+  kind: "basic",
+  name: "BasicDatabaseUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "database_usage_ref01",
+        srcdatavar: "database_usage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "database_usage01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-database_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatabaseUsageFlow"
+}

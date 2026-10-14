@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "validate": {
+      "VALIDATE00": {
+        "exp": 10,
+        "id": "VALIDATE00"
+      },
+      "VALIDATE01": {
+        "exp": 20,
+        "id": "VALIDATE01"
+      },
+      "VALIDATE02": {
+        "exp": 30,
+        "id": "VALIDATE02"
+      }
+    }
+  },
+  "new": {
+    "validate": {
+      "validate_ref01": {
+        "exp": 40
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/auth/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

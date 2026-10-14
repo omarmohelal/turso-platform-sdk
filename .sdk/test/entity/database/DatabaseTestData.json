@@ -1,0 +1,128 @@
+{
+  "existing": {
+    "database": {
+      "DATABASE00": {
+        "DbId": "sbe",
+        "Hostname": "sbf",
+        "Name": "sc0",
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "deleted_at": "sc4",
+        "group": "sc5",
+        "group_deleted_at": "sc6",
+        "group_id": "GROUP01",
+        "id": "DATABASE00",
+        "name": "sc9",
+        "organization_id": "ORGANIZATION01",
+        "parent": {},
+        "primaryRegion": "scc",
+        "regions": [],
+        "remote_encryption": {},
+        "seed": {},
+        "size_limit": "sd0",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "DATABASE01": {
+        "DbId": "s17c",
+        "Hostname": "s17d",
+        "Name": "s17e",
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "deleted_at": "s182",
+        "group": "s183",
+        "group_deleted_at": "s184",
+        "group_id": "GROUP01",
+        "id": "DATABASE01",
+        "name": "s187",
+        "organization_id": "ORGANIZATION01",
+        "parent": {},
+        "primaryRegion": "s18a",
+        "regions": [],
+        "remote_encryption": {},
+        "seed": {},
+        "size_limit": "s18e",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "DATABASE02": {
+        "DbId": "s23a",
+        "Hostname": "s23b",
+        "Name": "s23c",
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "deleted_at": "s240",
+        "group": "s241",
+        "group_deleted_at": "s242",
+        "group_id": "GROUP01",
+        "id": "DATABASE02",
+        "name": "s245",
+        "organization_id": "ORGANIZATION01",
+        "parent": {},
+        "primaryRegion": "s248",
+        "regions": [],
+        "remote_encryption": {},
+        "seed": {},
+        "size_limit": "s24c",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "database": {
+      "database_ref01": {
+        "DbId": "s2f8",
+        "Hostname": "s2f9",
+        "Name": "s2fa",
+        "block_reads": false,
+        "block_writes": true,
+        "delete_protection": false,
+        "deleted_at": "s2fe",
+        "group": "s2ff",
+        "group_deleted_at": "s300",
+        "group_id": "GROUP01",
+        "name": "s303",
+        "organization_id": "ORGANIZATION01",
+        "parent": {},
+        "primaryRegion": "s306",
+        "regions": [],
+        "remote_encryption": {},
+        "seed": {},
+        "size_limit": "s30a"
+      }
+    }
+  },
+  "requests": {
+    "POST /v3/organizations/{organizationId}/databases/{databaseId}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v3/organizations/{organizationId}/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/organizations/{organizationSlug}/databases/{databaseName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/organizations/{organizationSlug}/databases/{databaseName}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

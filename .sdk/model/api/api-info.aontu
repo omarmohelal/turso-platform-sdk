@@ -1,5 +1,31 @@
 # API Information
 
 
-
+main: {
+  kit: {
+    info: {
+      description: "API description here"
+      license: {
+        name: "MIT"
+      }
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearerAuth"
+        type: "http"
+      }
+      servers: [
+        {
+          description: "Turso's Platform API"
+          url: "https://api.turso.tech"
+        }
+      ]
+      summary: "API description here"
+      title: "Turso Platform API"
+      version: "0.1.0"
+      website: "https://turso.tech"
+    }
+  }
+}
 

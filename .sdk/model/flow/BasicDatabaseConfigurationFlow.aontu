@@ -1,0 +1,50 @@
+# BasicDatabaseConfigurationFlow
+
+main: kit: flow: BasicDatabaseConfigurationFlow:
+{
+  entity: "database_configuration",
+  kind: "basic",
+  name: "BasicDatabaseConfigurationFlow",
+  step: [
+    {
+      m: {
+        database_name: "database_name01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "database_configuration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "database_configuration_ref01",
+        srcdatavar: "database_configuration_ref01_data",
+        suffix: "_up0",
+        textfield: "size_limit"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-database_configuration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatabaseConfigurationFlow"
+}

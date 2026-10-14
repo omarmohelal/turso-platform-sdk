@@ -1,0 +1,102 @@
+# Entity: organization_plan
+
+main: kit: entity: organization_plan: {
+
+  alias: field: {}
+
+  fields: {
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the plan."
+      t: "`$STRING`"
+    }
+    price: {
+      h: "Price"
+      n: "price"
+      r: false
+      sh: "The monthly price of the plan."
+      t: "`$STRING`"
+    }
+    prices: {
+      h: "Prices"
+      n: "prices"
+      r: false
+      t: "`$ARRAY`"
+    }
+    quotas: {
+      h: "Quotas"
+      n: "quotas"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "organization_plan"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/organizations/{organizationSlug}/plans"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/organizations/{organizationSlug}/plans"
+          q: {
+            exist: [
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "plans"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.plans`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

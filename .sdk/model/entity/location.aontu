@@ -1,0 +1,309 @@
+# Entity: location
+
+main: kit: entity: location: {
+
+  alias: field: {}
+
+  fields: {
+    awsapnortheast1: {
+      h: "Awsapnortheast1"
+      n: "awsapnortheast1"
+      r: false
+      t: "`$STRING`"
+    }
+    awsapsouth1: {
+      h: "Awsapsouth1"
+      n: "awsapsouth1"
+      r: false
+      t: "`$STRING`"
+    }
+    awseuwest1: {
+      h: "Awseuwest1"
+      n: "awseuwest1"
+      r: false
+      t: "`$STRING`"
+    }
+    awsuseast1: {
+      h: "Awsuseast1"
+      n: "awsuseast1"
+      r: false
+      t: "`$STRING`"
+    }
+    awsuseast2: {
+      h: "Awsuseast2"
+      n: "awsuseast2"
+      r: false
+      t: "`$STRING`"
+    }
+    awsuswest2: {
+      h: "Awsuswest2"
+      n: "awsuswest2"
+      r: false
+      t: "`$STRING`"
+    }
+    delete_protection: {
+      h: "Delete Protection"
+      n: "delete_protection"
+      r: false
+      sh: "The current status for delete protection."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    locations: {
+      de: true
+      h: "Locations"
+      n: "locations"
+      r: false
+      sh: "An array of location keys the group is located."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The group name, unique across your organization."
+      t: "`$STRING`"
+    }
+    primary: {
+      h: "Primary"
+      n: "primary"
+      r: false
+      sh: "The primary location key."
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The group universal unique identifier (UUID)."
+      t: "`$STRING`"
+    }
+    version: {
+      de: true
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "The current libSQL server version the databases in that group are running."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "location"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "aws-us-east-1"
+                k: "param"
+                n: "id"
+                or: "location"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}"
+          q: {
+            exist: [
+              "group_name"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              location: "id"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "locations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.group`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/locations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/locations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "locations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.locations`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "location"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}"
+          q: {
+            exist: [
+              "group_name"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              location: "id"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "locations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.group`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.group")]
+  ]
+
+}

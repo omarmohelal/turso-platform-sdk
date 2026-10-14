@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "audit_log": {
+      "AUDIT_LOG00": {
+        "author": "s3c",
+        "code": "s3d",
+        "created_at": "s3e",
+        "data": {},
+        "message": "s40",
+        "origin": "s41",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "AUDIT_LOG01": {
+        "author": "s78",
+        "code": "s79",
+        "created_at": "s7a",
+        "data": {},
+        "message": "s7c",
+        "origin": "s7d",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      },
+      "AUDIT_LOG02": {
+        "author": "sb4",
+        "code": "sb5",
+        "created_at": "sb6",
+        "data": {},
+        "message": "sb8",
+        "origin": "sb9",
+        "organization_slug": "ORGANIZATION_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "audit_log": {
+      "audit_log_ref01": {
+        "author": "sf0",
+        "code": "sf1",
+        "created_at": "sf2",
+        "data": {},
+        "message": "sf4",
+        "origin": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/audit-logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

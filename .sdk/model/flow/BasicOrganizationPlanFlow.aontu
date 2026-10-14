@@ -1,0 +1,26 @@
+# BasicOrganizationPlanFlow
+
+main: kit: flow: BasicOrganizationPlanFlow:
+{
+  entity: "organization_plan",
+  kind: "basic",
+  name: "BasicOrganizationPlanFlow",
+  step: [
+    {
+      m: {
+        organization_slug: "organization_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_plan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationPlanFlow"
+}

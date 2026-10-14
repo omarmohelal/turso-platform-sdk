@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "deleted_group": {
+      "DELETED_GROUP00": {
+        "cascade_databases": 40,
+        "deleted_at": "s29",
+        "name": "s2a",
+        "uuid": "s2b",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DELETED_GROUP01": {
+        "cascade_databases": 80,
+        "deleted_at": "s51",
+        "name": "s52",
+        "uuid": "s53",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DELETED_GROUP02": {
+        "cascade_databases": 120,
+        "deleted_at": "s79",
+        "name": "s7a",
+        "uuid": "s7b",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deleted_group": {
+      "deleted_group_ref01": {
+        "cascade_databases": 160,
+        "deleted_at": "sa1",
+        "name": "sa2",
+        "uuid": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v3/organizations/{organizationId}/deleted-groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

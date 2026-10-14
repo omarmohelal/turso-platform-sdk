@@ -1,0 +1,26 @@
+# BasicInviteFlow
+
+main: kit: flow: BasicInviteFlow:
+{
+  entity: "invite",
+  kind: "basic",
+  name: "BasicInviteFlow",
+  step: [
+    {
+      m: {
+        organization_slug: "organization_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "invite_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInviteFlow"
+}

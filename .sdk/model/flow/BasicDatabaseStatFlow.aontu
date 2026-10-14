@@ -1,0 +1,27 @@
+# BasicDatabaseStatFlow
+
+main: kit: flow: BasicDatabaseStatFlow:
+{
+  entity: "database_stat",
+  kind: "basic",
+  name: "BasicDatabaseStatFlow",
+  step: [
+    {
+      m: {
+        database_name: "database_name01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "database_stat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatabaseStatFlow"
+}

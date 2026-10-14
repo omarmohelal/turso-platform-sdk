@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "organization_usage": {
+      "ORGANIZATION_USAGE00": {
+        "databases": [],
+        "usage": {},
+        "uuid": "s20",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_USAGE00"
+      },
+      "ORGANIZATION_USAGE01": {
+        "databases": [],
+        "usage": {},
+        "uuid": "s3e",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_USAGE01"
+      },
+      "ORGANIZATION_USAGE02": {
+        "databases": [],
+        "usage": {},
+        "uuid": "s5c",
+        "organization_slug": "ORGANIZATION_SLUG01",
+        "id": "ORGANIZATION_USAGE02"
+      }
+    }
+  },
+  "new": {
+    "organization_usage": {
+      "organization_usage_ref01": {
+        "databases": [],
+        "usage": {},
+        "uuid": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

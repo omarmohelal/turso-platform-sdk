@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "database_stat": {
+      "DATABASE_STAT00": {
+        "query": "s1e",
+        "rows_read": 31,
+        "rows_written": 32,
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DATABASE_STAT01": {
+        "query": "s3c",
+        "rows_read": 61,
+        "rows_written": 62,
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DATABASE_STAT02": {
+        "query": "s5a",
+        "rows_read": 91,
+        "rows_written": 92,
+        "database_name": "DATABASE_NAME01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "database_stat": {
+      "database_stat_ref01": {
+        "query": "s78",
+        "rows_read": 121,
+        "rows_written": 122
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/organizations/{organizationSlug}/databases/{databaseName}/stats": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

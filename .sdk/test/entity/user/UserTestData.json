@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "avatarUrl": "s46",
+        "email": "s47",
+        "has_pending_invites": true,
+        "mfa": false,
+        "name": "s4a",
+        "plan": "s4b",
+        "username": "s4c",
+        "id": "USER00"
+      },
+      "USER01": {
+        "avatarUrl": "s8c",
+        "email": "s8d",
+        "has_pending_invites": true,
+        "mfa": false,
+        "name": "s90",
+        "plan": "s91",
+        "username": "s92",
+        "id": "USER01"
+      },
+      "USER02": {
+        "avatarUrl": "sd2",
+        "email": "sd3",
+        "has_pending_invites": true,
+        "mfa": false,
+        "name": "sd6",
+        "plan": "sd7",
+        "username": "sd8",
+        "id": "USER02"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "avatarUrl": "s118",
+        "email": "s119",
+        "has_pending_invites": true,
+        "mfa": false,
+        "name": "s11c",
+        "plan": "s11d",
+        "username": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/user": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

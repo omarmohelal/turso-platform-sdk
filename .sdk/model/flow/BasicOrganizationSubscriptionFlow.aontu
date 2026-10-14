@@ -1,0 +1,32 @@
+# BasicOrganizationSubscriptionFlow
+
+main: kit: flow: BasicOrganizationSubscriptionFlow:
+{
+  entity: "organization_subscription",
+  kind: "basic",
+  name: "BasicOrganizationSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_subscription_ref01",
+        srcdatavar: "organization_subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "organization_subscription01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationSubscriptionFlow"
+}

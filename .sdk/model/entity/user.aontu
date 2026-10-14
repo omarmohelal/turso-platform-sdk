@@ -1,0 +1,95 @@
+# Entity: user
+
+main: kit: entity: user: {
+
+  alias: field: {}
+
+  fields: {
+    avatarUrl: {
+      h: "Avatar Url"
+      n: "avatarUrl"
+      r: false
+      sh: "URL to the user's avatar image."
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "The primary email address of the user."
+      t: "`$STRING`"
+    }
+    has_pending_invites: {
+      h: "Has Pending Invites"
+      n: "has_pending_invites"
+      r: false
+      sh: "Whether the user has pending organization invites waiting to be accepted or declined."
+      t: "`$BOOLEAN`"
+    }
+    mfa: {
+      h: "Mfa"
+      n: "mfa"
+      r: false
+      sh: "Whether the user has multi-factor authentication enabled."
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The display name of the user."
+      t: "`$STRING`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      r: false
+      sh: "The user's current plan."
+      t: "`$STRING`"
+    }
+    username: {
+      h: "Username"
+      n: "username"
+      r: false
+      sh: "The username of the user."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "user"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/user"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/user"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

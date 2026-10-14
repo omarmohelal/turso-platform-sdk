@@ -1,0 +1,51 @@
+# BasicInstanceFlow
+
+main: kit: flow: BasicInstanceFlow:
+{
+  entity: "instance",
+  kind: "basic",
+  name: "BasicInstanceFlow",
+  step: [
+    {
+      m: {
+        database_name: "database_name01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "instance_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "instance_ref01",
+        srcdatavar: "instance_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        database_name: "database_name01",
+        id: "instance01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-instance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInstanceFlow"
+}

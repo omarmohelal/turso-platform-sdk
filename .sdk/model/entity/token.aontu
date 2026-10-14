@@ -1,0 +1,221 @@
+# Entity: token
+
+main: kit: entity: token: {
+
+  alias: field: {}
+
+  fields: {
+    jwt: {
+      h: "Jwt"
+      n: "jwt"
+      r: false
+      sh: "The generated authorization token (JWT)."
+      t: "`$STRING`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: false
+      sh: "The permissions for the token."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "token"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "permissions"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "full-access"
+                k: "query"
+                n: "authorization"
+                or: "authorization"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "never"
+                k: "query"
+                n: "expiration"
+                or: "expiration"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens"
+          q: {
+            exist: [
+              "database_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "permissions"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "full-access"
+                k: "query"
+                n: "authorization"
+                or: "authorization"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "never"
+                k: "query"
+                n: "expiration"
+                or: "expiration"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens"
+          q: {
+            exist: [
+              "group_name"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.database")]
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.group")]
+  ]
+
+}

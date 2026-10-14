@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "location": {
+      "LOCATION00": {
+        "awsapnortheast1": "s82",
+        "awsapsouth1": "s83",
+        "awseuwest1": "s84",
+        "awsuseast1": "s85",
+        "awsuseast2": "s86",
+        "awsuswest2": "s87",
+        "delete_protection": true,
+        "id": "LOCATION00",
+        "locations": [],
+        "name": "s8b",
+        "primary": "s8c",
+        "uuid": "s8d",
+        "version": "s8e",
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOCATION01": {
+        "awsapnortheast1": "s104",
+        "awsapsouth1": "s105",
+        "awseuwest1": "s106",
+        "awsuseast1": "s107",
+        "awsuseast2": "s108",
+        "awsuswest2": "s109",
+        "delete_protection": true,
+        "id": "LOCATION01",
+        "locations": [],
+        "name": "s10d",
+        "primary": "s10e",
+        "uuid": "s10f",
+        "version": "s110",
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOCATION02": {
+        "awsapnortheast1": "s186",
+        "awsapsouth1": "s187",
+        "awseuwest1": "s188",
+        "awsuseast1": "s189",
+        "awsuseast2": "s18a",
+        "awsuswest2": "s18b",
+        "delete_protection": true,
+        "id": "LOCATION02",
+        "locations": [],
+        "name": "s18f",
+        "primary": "s190",
+        "uuid": "s191",
+        "version": "s192",
+        "group_name": "GROUP_NAME01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "location": {
+      "location_ref01": {
+        "awsapnortheast1": "s208",
+        "awsapsouth1": "s209",
+        "awseuwest1": "s20a",
+        "awsuseast1": "s20b",
+        "awsuseast2": "s20c",
+        "awsuswest2": "s20d",
+        "delete_protection": true,
+        "locations": [],
+        "name": "s211",
+        "primary": "s212",
+        "uuid": "s213",
+        "version": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/locations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}
