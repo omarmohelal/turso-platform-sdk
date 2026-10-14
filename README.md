@@ -25,8 +25,10 @@ databases, groups, tokens and members.
 | Live check against api.turso.tech | Read-only, 2026-10-14: 15 entity operations called with GET, 14 succeeded, 1 returned 403 from Turso ([details](./DX-REPORT.md#verification)) |
 | Writes against the live API | Not tested |
 | Python, Go and other languages | Not generated |
+| CI (`.github/workflows/ci.yml`) | Offline suite and example on Linux, started by hand; not run on GitHub yet |
 
-How it was built, what went wrong and what was corrected is in [DX-REPORT.md](./DX-REPORT.md).
+**Start here:** the [developer experience report](./DX-REPORT.md). Its first screen is a short
+summary; the rest has the reproduction steps, evidence and limits for each finding.
 
 ## Install
 
@@ -126,11 +128,11 @@ The full reference, with every field and parameter, is generated in
 organization's databases (group, regions) and its groups. It only reads. It runs the `.ts` file
 directly, so it needs Node.js 24 (tested on 24.21).
 
+Copy [`examples/.env.example`](./examples/.env.example) to `examples/.env.local` (gitignored) and fill
+in your token and organization slug, then:
+
 ```bash
 cd examples
-# examples/.env.local (gitignored):
-#   TURSO_PLATFORM_APIKEY=...
-#   TURSO_PLATFORM_ORG=my-org
 npm run summary
 ```
 

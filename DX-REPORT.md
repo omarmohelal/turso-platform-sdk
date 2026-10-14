@@ -188,7 +188,9 @@ name in SECURITY.md.
 
 **Workaround used.** `main: kit: phase: top: active: false`, then fixed CHANGELOG.md and SECURITY.md
 by hand and removed the summary edition with `voxgig-sdkgen edition remove summary` (which removed
-the model files but left the generated `SUMMARY.md` behind).
+the model files but left the generated `SUMMARY.md` behind). With the root files hand-maintained, I
+also cut the generated `ci.yml` (24 jobs, one per bundled language, each skipping itself when its
+directory is absent) down to the one job this repository needs.
 
 ### 5. The offline mock filters `list()` by parent for some entities only
 
@@ -302,7 +304,8 @@ error (`list: request: 403: Forbidden`).
   `fetch` and the type checker, not against Turso.
 - Live list responses with records for databases and groups (the account has none).
 - Python, Go and the other targets (not generated). CLI and MCP surfaces (not generated).
-- The repository's CI (not pushed yet). Linux and macOS (Windows only).
+- The CI workflow has not run on GitHub yet, so the suite has only been run on Windows, not on Linux
+  or macOS.
 
 ## Human time and how I worked
 
