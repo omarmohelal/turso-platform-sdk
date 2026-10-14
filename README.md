@@ -49,23 +49,32 @@ turso auth api-tokens mint my-token --org my-org
 
 Keep it in an environment variable. The SDK sends it as `Authorization: Bearer <token>`.
 
-## First call
+## Quickstart
 
 ```ts
 import { TursoPlatformSDK } from '@omarmohelal/turso-platform-sdk'
 
 const client = new TursoPlatformSDK({ apikey: process.env.TURSO_PLATFORM_APIKEY })
 
-const databases = await client.Database().list({ organization_slug: 'my-org' })
+const groups = await client.Group().list({ organization_slug: 'my-org' })
 
-for (const db of databases) {
-  const { Name, primaryRegion, regions } = db.data()
-  console.log(Name, primaryRegion, regions)
+for (const group of groups) {
+  const { name, primary, locations } = group.data()
+  console.log(name, primary, locations)
 }
 ```
 
 The snippet uses top-level `await`, so run it as an ES module (or inside an `async` function).
 Every call returns entities; `.data()` gives the plain record. Operations throw on failure.
+
+Listing databases works the same way at runtime, but the generated TypeScript type for
+`Database().list()` only knows the parameters of Turso's v3 deleted-databases endpoint
+([finding 6](./DX-REPORT.md#6-typescript-types-for-operations-with-several-routes)), so the everyday
+call needs a cast for now:
+
+```ts
+const databases = await client.Database().list({ organization_slug: 'my-org' } as any)
+```
 
 ## What is covered
 
@@ -94,15 +103,16 @@ Turso's 53 operations are grouped into 20 entities:
 | `User()` | load | |
 | `Validate()` | load | |
 
-Actions are operations on one database or group, for example minting a database token:
+Actions are operations on one database or group, for example minting a database token. Action
+payloads are typed as a plain `create` (finding 6), hence the two casts:
 
 ```ts
 const result = await client.Database().create({
   $action: 'token',
   organization_slug: 'my-org',
   database_name: 'my-db',
-})
-const { jwt } = result.data()
+} as any)
+const { jwt } = result.data() as any
 ```
 
 The full reference, with every field and parameter, is generated in
@@ -124,10 +134,14 @@ cd examples
 npm run summary
 ```
 
-Its tests run against the SDK's offline mock (`TursoPlatformSDK.test()`), with no network:
+Its tests run against the SDK's offline mock (`TursoPlatformSDK.test()`), with no network, and
+`typecheck` runs strict TypeScript over it (it uses the compiler from `ts/`, so run `npm install`
+in `ts/` first):
 
 ```bash
-cd examples && npm test
+cd examples
+npm test
+npm run typecheck
 ```
 
 ## Run the tests

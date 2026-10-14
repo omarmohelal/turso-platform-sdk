@@ -40,8 +40,8 @@ test('sorts databases by name so the output is stable', async () => {
     entity: {
       user: { me: { username: 'omar' } },
       database: {
-        d1: { Name: 'zeta', group: 'default', regions: [] },
-        d2: { Name: 'alpha', group: 'default', regions: [] },
+        d1: { Name: 'zeta', group: 'default', regions: [], organization_slug: 'acme' },
+        d2: { Name: 'alpha', group: 'default', regions: [], organization_slug: 'acme' },
       },
       group: {},
     },

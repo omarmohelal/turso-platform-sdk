@@ -8,21 +8,17 @@
 
 import { TursoPlatformSDK } from '../ts/dist/TursoPlatformSDK.js'
 
-type Summary = {
-  organization: string
-  user: string
-  databases: { name: string, group: string, primaryRegion: string, regions: string[] }[]
-  groups: { name: string, primary: string, locations: string[] }[]
-}
+// Generated record types mark every field optional, so names can be undefined.
+const byName = (a: { name?: string }, b: { name?: string }) =>
+  (a.name ?? '').localeCompare(b.name ?? '')
 
-export async function summarizeOrganization(client: TursoPlatformSDK, org: string): Promise<Summary> {
+export async function summarizeOrganization(client: TursoPlatformSDK, org: string) {
   const [user, databases, groups] = await Promise.all([
     client.User().load(),
-    client.Database().list({ organization_slug: org }),
+    // The generated DatabaseListMatch type only has the v3 parameters (DX-REPORT finding 6).
+    client.Database().list({ organization_slug: org } as any),
     client.Group().list({ organization_slug: org }),
   ])
-
-  const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name)
 
   return {
     organization: org,
@@ -52,7 +48,7 @@ if (import.meta.main) {
   const org = process.env.TURSO_PLATFORM_ORG
 
   if (!apikey || !org) {
-    console.error('Set TURSO_PLATFORM_APIKEY and TURSO_PLATFORM_ORG (see README, "Run the live check").')
+    console.error('Set TURSO_PLATFORM_APIKEY and TURSO_PLATFORM_ORG in examples/.env.local (see README, "Example: organization summary").')
     process.exit(1)
   }
 
