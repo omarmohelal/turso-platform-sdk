@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"*.test.ts\"",
+    "summary": "node --env-file=../ts/.env.local org-summary.ts"
+  }
+}

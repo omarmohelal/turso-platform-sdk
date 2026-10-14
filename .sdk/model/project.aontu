@@ -45,3 +45,8 @@ main: kit: text: {
 }
 
 main: kit: target: ts: publish: registry: package: '@omarmohelal/turso-platform-sdk'
+
+# The root README is written by hand (it states what was verified and how),
+# so stop regenerating the repo-root files. ts/README.md and ts/REFERENCE.md
+# are still generated and are the API reference.
+main: kit: phase: top: active: false

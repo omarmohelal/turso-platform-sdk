@@ -1,13 +1,12 @@
 # Changelog
 
-All notable changes to the generated TursoPlatform SDK are documented here.
-This project follows [Keep a Changelog](https://keepachangelog.com) and
-[Semantic Versioning](https://semver.org).
+All notable changes to this SDK are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com).
 
 ## [Unreleased]
 
-## [0.0.1]
+## [0.0.1] - 2026-10-14
 
-- Initial generated release of the TursoPlatform SDK (TypeScript, Python, PHP, Go,
-  Ruby, and Lua, plus CLI and MCP surfaces), generated from the upstream
-  OpenAPI specification by @voxgig/sdkgen.
+- First generated version of the TypeScript SDK for the Turso Platform API,
+  built with `@voxgig/sdkgen` 4.34.5 from Turso's OpenAPI spec (0.1.0).
+  Not published to npm.

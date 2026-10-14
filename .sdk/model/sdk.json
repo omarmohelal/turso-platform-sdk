@@ -74,29 +74,6 @@
             },
             "style": {},
             "title": ""
-          },
-          "summary": {
-            "active": true,
-            "base": "node_modules/@voxgig/docgen/project/.sdk",
-            "brand": {},
-            "filter": {
-              "entities": [],
-              "features": [],
-              "targets": []
-            },
-            "kind": "summary",
-            "name": "summary",
-            "origname": "",
-            "output": {
-              "path": "SUMMARY.md"
-            },
-            "package": "@voxgig/docgen",
-            "published": false,
-            "site": {
-              "active": true
-            },
-            "style": {},
-            "title": ""
           }
         },
         "qa": {
@@ -6392,7 +6369,7 @@
           "active": true
         },
         "top": {
-          "active": true
+          "active": false
         }
       },
       "publisher": {
