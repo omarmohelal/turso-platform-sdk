@@ -6,7 +6,8 @@ Omar Mohelal, 2026-10-14. Mini task 1.
 
 I generated a TypeScript SDK for the Turso Platform API (OpenAPI 3.0.1, 53 operations) with
 `@voxgig/create-sdkgen` 0.30.7 / `@voxgig/sdkgen` 4.34.5 on Windows 11. After two known Windows
-workarounds and two corrections in `guide.aontu`, the SDK builds and passes its 372 offline tests.
+workarounds and two corrections in `guide.aontu`, the SDK builds, passes its 372 offline tests, and
+answered 14 of 15 read-only operations against the live API (the 15th was a 403 from Turso).
 
 Six findings below are new as far as I could tell: for each one I searched the voxgig/sdkgen,
 apidef and create-sdkgen issues by keyword (voxgig/docgen as well for finding 4) and found no
@@ -50,6 +51,7 @@ impact:
 | 13:48–14:00 | Publisher, README text, `phase: top` off, summary edition removed | Root files now hand-maintained |
 | 14:22 | Re-ran doctor, generate and tests after those changes | Root-README gate failed on my hand-written snippets (finding 6); fixed the snippets |
 | 14:30 | Final run | 372 tests: 344 pass, 0 fail, 28 skipped; doctor clean |
+| 14:52–14:57 | Read-only live check against api.turso.tech (fresh free account) | 15 entity operations with GET: 14 OK, 1 × 403 |
 
 ## Findings
 
@@ -246,8 +248,8 @@ example.
   apidef still picked the scheme, and every request carries `Authorization: Bearer …` (checked with a
   fake `fetch` on ten calls).
 - **Most of the entity model was right first time.** Of 22 inferred entities, two needed restructuring
-  (`rotate`, `token`) and six needed one parameter renamed. Envelopes such as `body.databases`,
-  `body.groups` and `body.user` were picked correctly.
+  (`rotate`, `token`) and six needed one parameter renamed. Envelopes were picked correctly where
+  the live check could test them (members, plans, tokens, user).
 - **The guide is a good correction surface.** Both fixes were declarative, lived in one file, and
   survived regeneration.
 - **The generated tests caught real bugs.** The definition test checks each operation against the
@@ -268,12 +270,37 @@ example.
 | Example tests | `cd examples && npm test` | 2 tests, 2 pass |
 | Example types | `cd examples && npm run typecheck` (strict) | 0 errors |
 | Request shape | fake `fetch` probes | Correct method, URL and Bearer header on 10 calls; bodies as described in finding 3 |
-| Live, read-only | `cd examples && npm run summary` | Not run yet |
+| Live, read-only | `cd examples && npm run summary`, plus a GET-only sweep | See below |
+
+### Live check (read-only)
+
+Run on 2026-10-14 with an organization-scoped Platform API token on a new free account. Every
+request was a GET; nothing was created, changed or deleted.
+
+| Operation | Result |
+|---|---|
+| `Organization().list()`, `Organization().load({ id })` | OK; 1 organization |
+| `User().load()`, `Validate().load()` | OK |
+| `Database().list()`, `Group().list()` (via the example) | OK; 0 and 0, as expected on a new account |
+| `Member().list()` | OK; SDK 1 record, raw response 1 |
+| `OrganizationPlan().list()` | OK; SDK 4 records, raw response 4 |
+| `ApiToken().list({ organization_slug })` | OK; SDK 1 record, raw response 1 |
+| `Invite().list()`, `OrganizationInvoice().list()` | OK; 0 and 0 (raw 0 and 0) |
+| `OrganizationSubscription().load()`, `OrganizationUsage().load()` | OK |
+| `Location().load()` | OK; 10 locations |
+| `AuditLog().list()` | **403 Forbidden** from the API; likely a plan or token-scope limit, not investigated |
+
+The raw comparisons used `client.direct()` on the same paths. Where records exist, the SDK's
+envelope unwrapping matches the raw response. The empty database and group lists cannot tell a
+correct envelope from a wrong one (the apidef#119 failure mode). The 403 came back as a clear
+error (`list: request: 403: Forbidden`).
 
 ## Not tested
 
 - Any write against the live API, including the generated live suite (`TURSO_PLATFORM_TEST_LIVE`),
-  which creates, updates and deletes resources.
+  which creates, updates and deletes resources. Findings 3 and 6 are therefore checked with a fake
+  `fetch` and the type checker, not against Turso.
+- Live list responses with records for databases and groups (the account has none).
 - Python, Go and the other targets (not generated). CLI and MCP surfaces (not generated).
 - The repository's CI (not pushed yet). Linux and macOS (Windows only).
 
@@ -293,7 +320,6 @@ fact-checked the README and this report against the repository and the logs.
 | | Minutes |
 |---|---|
 | My active time, all of the above (my estimate) | about 20 |
-| Agent runtime, unattended | research: two agents in parallel, 12.5 and 22.5 min; build, tests, report and review: about 70 min (13:27–14:40) |
+| Agent runtime, unattended | research: two agents in parallel, 12.5 and 22.5 min; build, tests, report, review and live check: about 90 min (13:27–15:00) |
 
-That is inside the 30-minute limit. Elapsed time from the brief to this report was about two and a
-half hours, most of it the agent working while I was away.
+That is inside the 30-minute limit. Elapsed time from the brief to this report was about three hours, most of it the agent working while I was away.

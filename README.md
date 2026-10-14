@@ -22,7 +22,7 @@ databases, groups, tokens and members.
 |---|---|
 | TypeScript SDK (`ts/`) | Generated with `@voxgig/sdkgen` 4.34.5 from Turso spec 0.1.0 |
 | Offline test suite | 372 tests: 344 pass, 0 fail, 28 skipped (opt-in features not generated) |
-| Live check against api.turso.tech | Not run yet (read-only, three GET requests, see [DX-REPORT.md](./DX-REPORT.md#verification)) |
+| Live check against api.turso.tech | Read-only, 2026-10-14: 15 entity operations called with GET, 14 succeeded, 1 returned 403 from Turso ([details](./DX-REPORT.md#verification)) |
 | Writes against the live API | Not tested |
 | Python, Go and other languages | Not generated |
 
