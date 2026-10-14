@@ -35,7 +35,7 @@ reporting them again.
 |---|---|
 | SDK | TypeScript, generated with `@voxgig/sdkgen` 4.34.5 from Turso's spec 0.1.0; 20 entities, 53 operations |
 | Offline tests | 372: 344 pass, 0 fail, 28 skipped (opt-in features that were not generated) |
-| Live API | Read-only check on 2026-10-14: 15 operations, 14 OK, 1 × 403 from Turso ([details](./DX-REPORT.md#verification)) |
+| Live API | Read-only check on 2026-10-14: 15 operations, 14 OK; audit logs returned 403, as expected on Turso's free plan ([details](./DX-REPORT.md#verification)) |
 | Not tested | Writes against the live API; Python, Go and other languages (not generated) |
 | CI | [Passed](https://github.com/omarmohelal/turso-platform-sdk/actions/runs/38571446509) on a self-hosted Linux runner. GitHub-hosted runners have not run it because of a billing restriction on my account |
 

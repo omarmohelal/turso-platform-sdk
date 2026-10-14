@@ -7,7 +7,8 @@ Omar Mohamad, 2026-10-14. Mini task 1.
 I generated a TypeScript SDK for the Turso Platform API (OpenAPI 3.0.1, 53 operations) with
 `@voxgig/create-sdkgen` 0.30.7 / `@voxgig/sdkgen` 4.34.5 on Windows 11. After two known Windows
 workarounds and two corrections in `guide.aontu`, the SDK builds, passes its 372 offline tests, and
-answered 14 of 15 read-only operations against the live API (the 15th was a 403 from Turso).
+answered 14 of 15 read-only operations against the live API. The 15th, audit logs, returned 403, which
+matches Turso not offering audit logs on the free plan.
 
 Six findings below are new as far as I could tell: for each one I searched the voxgig/sdkgen,
 apidef and create-sdkgen issues by keyword (voxgig/docgen as well for finding 4) and found no
@@ -305,7 +306,7 @@ request was a GET; nothing was created, changed or deleted.
 | `Invite().list()`, `OrganizationInvoice().list()` | OK; 0 and 0 (raw 0 and 0) |
 | `OrganizationSubscription().load()`, `OrganizationUsage().load()` | OK |
 | `Location().load()` | OK; 10 locations |
-| `AuditLog().list()` | **403 Forbidden** from the API; likely a plan or token-scope limit, not investigated |
+| `AuditLog().list()` | **403 Forbidden** from the API. Consistent with plan limits: Turso's [pricing page](https://turso.tech/pricing) lists audit logs as unavailable on the Free plan, and the [API reference](https://docs.turso.tech/api-reference/audit-logs/list) says they are limited to the Scaler plan and above. The account is on the free plan; I did not check the token's permissions separately |
 
 The raw comparisons used `client.direct()` on the same paths. Where records exist, the SDK's
 envelope unwrapping matches the raw response. The empty database and group lists cannot tell a
