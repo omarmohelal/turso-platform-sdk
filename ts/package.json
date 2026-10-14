@@ -41,7 +41,7 @@
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
   "author": {
-    "name": "Omar Mohelal",
+    "name": "Omar Mohamad",
     "url": "https://github.com/omarmohelal"
   },
   "license": "MIT",

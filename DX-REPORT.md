@@ -1,6 +1,6 @@
 # Developer experience report: Voxgig SDK generator on the Turso Platform API
 
-Omar Mohelal, 2026-10-14. Mini task 1.
+Omar Mohamad, 2026-10-14. Mini task 1.
 
 ## Summary
 
@@ -173,7 +173,7 @@ After setting `main.kit.publisher` and generating only `ts`:
 
 - `CHANGELOG.md` says the release covers "TypeScript, Python, PHP, Go, Ruby, and Lua, plus CLI and
   MCP surfaces". The list is fixed text in `src/cmp/Changelog.ts` (line 22).
-- `SECURITY.md` says "the generated Omar Mohelal SDK packages published from this repository (npm,
+- `SECURITY.md` says "the generated <publisher name> SDK packages published from this repository (npm,
   PyPI, Packagist, RubyGems, LuaRocks, and the Go module)". `src/cmp/Security.ts` (line 33) puts the
   publisher's name where the SDK's name belongs, and the registry list is fixed.
 - `SUMMARY.md` (summary edition) shows the spec's placeholder description ("API description here")

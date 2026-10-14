@@ -28,7 +28,7 @@
 # Who publishes this SDK. Without this block LICENSE names Voxgig and
 # SECURITY.md points at security@voxgig.com.
 main: kit: publisher: {
-  name: 'Omar Mohelal'
+  name: 'Omar Mohamad'
   url: 'https://github.com/omarmohelal'
   security: 'https://github.com/omarmohelal/turso-platform-sdk/security/advisories/new'
 }
