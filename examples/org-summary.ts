@@ -1,7 +1,7 @@
 // Read-only overview of a Turso organization: who the token belongs to,
 // which databases exist (with their group and regions), and which groups exist.
 //
-//   node --env-file=ts/.env.local examples/org-summary.ts
+//   cd examples && node --env-file=.env.local org-summary.ts
 //
 // Needs TURSO_PLATFORM_APIKEY and TURSO_PLATFORM_ORG. Sends three GET requests
 // and changes nothing in the organization.
