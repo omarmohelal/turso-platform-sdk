@@ -9,7 +9,7 @@
         "type": "s40",
         "uuid": "s41",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       },
       "INSTANCE01": {
         "hostname": "s78",
@@ -19,7 +19,7 @@
         "type": "s7c",
         "uuid": "s7d",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       },
       "INSTANCE02": {
         "hostname": "sb4",
@@ -29,7 +29,7 @@
         "type": "sb8",
         "uuid": "sb9",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       }
     }
   },

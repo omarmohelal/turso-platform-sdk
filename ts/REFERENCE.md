@@ -265,30 +265,6 @@ Create a new `OrganizationUsage` entity instance.
 
 **Returns:** `OrganizationUsageEntity` instance.
 
-#### `Rotate(data?: object)`
-
-Create a new `Rotate` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `RotateEntity` instance.
-
-#### `Token(data?: object)`
-
-Create a new `Token` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `TokenEntity` instance.
-
 #### `User(data?: object)`
 
 Create a new `User` entity instance.
@@ -563,6 +539,8 @@ remaining keys are sent as that action's payload.
 | Action | Route | Call |
 | --- | --- | --- |
 | `restore` | `/v3/organizations/{organizationId}/databases/{databaseId}/restore` | `client.Database().create({ $action: 'restore', ... })` |
+| `rotate` | `/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate` | `client.Database().create({ $action: 'rotate', ... })` |
+| `token` | `/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens` | `client.Database().create({ $action: 'token', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 Database record — check the API definition for its shape.
@@ -664,7 +642,7 @@ const database_configuration = client.DatabaseConfiguration()
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.DatabaseConfiguration().list({ database_name: "example", organization_id: "example" })
+const results = await client.DatabaseConfiguration().list({ database_name: "example", organization_slug: "example" })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -674,7 +652,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 ```ts
 const result = await client.DatabaseConfiguration().update({
   database_name: 'database_name',
-  organization_id: 'organization_id',
+  organization_slug: 'organization_slug',
   // Fields to update
 })
 ```
@@ -728,7 +706,7 @@ const database_stat = client.DatabaseStat()
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.DatabaseStat().list({ database_name: "example", organization_id: "example" })
+const results = await client.DatabaseStat().list({ database_name: "example", organization_slug: "example" })
 ```
 
 ### Common Methods
@@ -780,7 +758,7 @@ const database_usage = client.DatabaseUsage()
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.DatabaseUsage().load({ database_name: 'database_name', organization_id: 'organization_id' })
+const result = await client.DatabaseUsage().load({ database_name: 'database_name', organization_slug: 'organization_slug' })
 ```
 
 ### Common Methods
@@ -907,6 +885,8 @@ remaining keys are sent as that action's payload.
 | Action | Route | Call |
 | --- | --- | --- |
 | `restore` | `/v3/organizations/{organizationId}/groups/{groupId}/restore` | `client.Group().create({ $action: 'restore', ... })` |
+| `rotate` | `/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate` | `client.Group().create({ $action: 'rotate', ... })` |
+| `token` | `/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens` | `client.Group().create({ $action: 'token', ... })` |
 | `transfer` | `/v1/organizations/{organizationSlug}/groups/{groupName}/transfer` | `client.Group().create({ $action: 'transfer', ... })` |
 | `unarchive` | `/v1/organizations/{organizationSlug}/groups/{groupName}/unarchive` | `client.Group().create({ $action: 'unarchive', ... })` |
 | `update` | `/v1/organizations/{organizationSlug}/groups/{groupName}/update` | `client.Group().create({ $action: 'update', ... })` |
@@ -1005,7 +985,7 @@ const group_configuration = client.GroupConfiguration()
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.GroupConfiguration().load({ group_name: 'group_name', organization_id: 'organization_id' })
+const result = await client.GroupConfiguration().load({ group_name: 'group_name', organization_slug: 'organization_slug' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -1015,7 +995,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 ```ts
 const result = await client.GroupConfiguration().update({
   group_name: 'group_name',
-  organization_id: 'organization_id',
+  organization_slug: 'organization_slug',
   // Fields to update
 })
 ```
@@ -1072,7 +1052,7 @@ const instance = client.Instance()
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.Instance().list({ database_name: "example", organization_id: "example" })
+const results = await client.Instance().list({ database_name: "example", organization_slug: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1080,7 +1060,7 @@ const results = await client.Instance().list({ database_name: "example", organiz
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.Instance().load({ id: 'instance_id', database_name: 'database_name', organization_id: 'organization_id' })
+const result = await client.Instance().load({ id: 'instance_id', database_name: 'database_name', organization_slug: 'organization_slug' })
 ```
 
 ### Common Methods
@@ -1206,7 +1186,7 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.Location().create({
   group_name: 'example_group_name',
   id: 'example_id',
-  organization_id: 'example_organization_id',
+  organization_slug: 'example_organization_slug',
 })
 ```
 
@@ -1223,7 +1203,7 @@ const result = await client.Location().load({ id: 'location_id' })
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.Location().remove({ id: 'location_id', group_name: 'group_name', organization_id: 'organization_id' })
+const result = await client.Location().remove({ id: 'location_id', group_name: 'group_name', organization_slug: 'organization_slug' })
 ```
 
 ### Common Methods
@@ -1649,105 +1629,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `OrganizationUsageEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `TursoPlatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## RotateEntity
-
-```ts
-const rotate = client.Rotate()
-```
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.Rotate().create({
-  organization_id: 'example_organization_id',
-})
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `RotateEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `TursoPlatformSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## TokenEntity
-
-```ts
-const token = client.Token()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `jwt` | `string` | No | The generated authorization token (JWT). |
-| `permissions` | `Record<string, any>` | No | The permissions for the token. |
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data. Resolves to the created entity.
-
-```ts
-const result = await client.Token().create({
-  organization_id: 'example_organization_id',
-})
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `TokenEntity` instance with the same client and
 options.
 
 #### `client()`

@@ -18,7 +18,5 @@
 @"./BasicOrganizationPlanFlow.aontu"
 @"./BasicOrganizationSubscriptionFlow.aontu"
 @"./BasicOrganizationUsageFlow.aontu"
-@"./BasicRotateFlow.aontu"
-@"./BasicTokenFlow.aontu"
 @"./BasicUserFlow.aontu"
 @"./BasicValidateFlow.aontu"

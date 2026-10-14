@@ -43,18 +43,18 @@ describe('InstanceDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-instance', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["database_name01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["database_name01","organization_slug01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       const listResult: any = await client.direct({
-        path: 'v1/organizations/{organization_id}/databases/{database_name}/instances',
+        path: 'v1/organizations/{organization_slug}/databases/{database_name}/instances',
         method: 'GET',
         params: {
         database_name: setup.idmap['database_name01'],
-        organization_id: setup.idmap['organization01'],
+        organization_slug: setup.idmap['organization_slug01'],
         },
       })
       if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
@@ -73,15 +73,15 @@ describe('InstanceDirect', async () => {
       }
       params.id = candidateId
       params.database_name = setup.idmap['database_name01']
-      params.organization_id = setup.idmap['organization01']
+      params.organization_slug = setup.idmap['organization_slug01']
     } else {
       params.database_name = 'direct01'
       params.id = 'direct02'
-      params.organization_id = 'direct03'
+      params.organization_slug = 'direct03'
     }
 
     const result: any = await client.direct({
-      path: 'v1/organizations/{organization_id}/databases/{database_name}/instances/{id}',
+      path: 'v1/organizations/{organization_slug}/databases/{database_name}/instances/{id}',
       method: 'GET',
       params,
       query,
@@ -111,21 +111,21 @@ describe('InstanceDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-instance', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["database_name01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["database_name01","organization_slug01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.database_name = setup.idmap['database_name01']
-      params.organization_id = setup.idmap['organization01']
+      params.organization_slug = setup.idmap['organization_slug01']
     } else {
       params.database_name = 'direct01'
-      params.organization_id = 'direct02'
+      params.organization_slug = 'direct02'
     }
 
     const result: any = await client.direct({
-      path: 'v1/organizations/{organization_id}/databases/{database_name}/instances',
+      path: 'v1/organizations/{organization_slug}/databases/{database_name}/instances',
       method: 'GET',
       params,
       query,

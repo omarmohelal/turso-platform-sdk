@@ -1,22 +1,21 @@
 {
-  "name": "@voxgig-sdk/turso-platform-sdk",
+  "name": "@omarmohelal/turso-platform-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Turso Platform public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
-    "voxgig",
     "sdk",
     "generated-sdk",
     "openapi",
     "api-client",
     "turso-platform"
   ],
-  "homepage": "https://github.com/voxgig-sdk/turso-platform-sdk#readme",
+  "homepage": "https://github.com/omarmohelal/turso-platform-sdk#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voxgig-sdk/turso-platform-sdk.git"
+    "url": "git+https://github.com/omarmohelal/turso-platform-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/voxgig-sdk/turso-platform-sdk/issues"
+    "url": "https://github.com/omarmohelal/turso-platform-sdk/issues"
   },
   "main": "dist/TursoPlatformSDK.js",
   "type": "commonjs",
@@ -42,8 +41,8 @@
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
   "author": {
-    "name": "Voxgig",
-    "url": "https://voxgig.com"
+    "name": "Omar Mohelal",
+    "url": "https://github.com/omarmohelal"
   },
   "license": "MIT",
   "engines": {

@@ -9,7 +9,7 @@ main: kit: flow: BasicInstanceFlow:
     {
       m: {
         database_name: "database_name01",
-        organization_id: "organization01"
+        organization_slug: "organization_slug01"
       }
 
       o: "list",
@@ -33,7 +33,7 @@ main: kit: flow: BasicInstanceFlow:
       m: {
         database_name: "database_name01",
         id: "instance01",
-        organization_id: "organization01"
+        organization_slug: "organization_slug01"
       }
 
       o: "load",

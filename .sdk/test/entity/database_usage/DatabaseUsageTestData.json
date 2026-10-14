@@ -6,7 +6,7 @@
         "total": {},
         "uuid": "s20",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "DATABASE_USAGE00"
       },
       "DATABASE_USAGE01": {
@@ -14,7 +14,7 @@
         "total": {},
         "uuid": "s3e",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "DATABASE_USAGE01"
       },
       "DATABASE_USAGE02": {
@@ -22,7 +22,7 @@
         "total": {},
         "uuid": "s5c",
         "database_name": "DATABASE_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "DATABASE_USAGE02"
       }
     }

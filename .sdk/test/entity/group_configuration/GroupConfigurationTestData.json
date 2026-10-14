@@ -4,19 +4,19 @@
       "GROUP_CONFIGURATION00": {
         "delete_protection": true,
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "GROUP_CONFIGURATION00"
       },
       "GROUP_CONFIGURATION01": {
         "delete_protection": true,
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "GROUP_CONFIGURATION01"
       },
       "GROUP_CONFIGURATION02": {
         "delete_protection": true,
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01",
+        "organization_slug": "ORGANIZATION_SLUG01",
         "id": "GROUP_CONFIGURATION02"
       }
     }

@@ -116,7 +116,7 @@ export interface DatabaseCreateData {
   size_limit?: string
 
   // Selects a custom action instead of the plain create:
-  //   'restore'
+  //   'restore' | 'rotate' | 'token'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -139,12 +139,12 @@ export interface DatabaseConfiguration {
 
 export interface DatabaseConfigurationListMatch {
   database_name: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface DatabaseConfigurationUpdateData {
   database_name: string
-  organization_id: string
+  organization_slug: string
   allow_attach?: boolean
   allowed_aws_vpc_ids?: any[]
   allowed_ips?: any[]
@@ -162,7 +162,7 @@ export interface DatabaseStat {
 
 export interface DatabaseStatListMatch {
   database_name: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface DatabaseUsage {
@@ -173,7 +173,7 @@ export interface DatabaseUsage {
 
 export interface DatabaseUsageLoadMatch {
   database_name: string
-  organization_id: string
+  organization_slug: string
   from?: string
   to?: string
 }
@@ -225,7 +225,7 @@ export interface GroupCreateData {
   version?: string
 
   // Selects a custom action instead of the plain create:
-  //   'restore' | 'transfer' | 'unarchive' | 'update'
+  //   'restore' | 'rotate' | 'token' | 'transfer' | 'unarchive' | 'update'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
@@ -242,12 +242,12 @@ export interface GroupConfiguration {
 
 export interface GroupConfigurationLoadMatch {
   group_name: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface GroupConfigurationUpdateData {
   group_name: string
-  organization_id: string
+  organization_slug: string
   delete_protection?: boolean
 }
 
@@ -263,12 +263,12 @@ export interface Instance {
 export interface InstanceLoadMatch {
   database_name: string
   id: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface InstanceListMatch {
   database_name: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface Invite {
@@ -322,7 +322,7 @@ export interface LocationLoadMatch {
 export interface LocationCreateData {
   group_name: string
   id: string
-  organization_id: string
+  organization_slug: string
   awsapnortheast1?: string
   awsapsouth1?: string
   awseuwest1?: string
@@ -340,7 +340,7 @@ export interface LocationCreateData {
 export interface LocationRemoveMatch {
   group_name: string
   id: string
-  organization_id: string
+  organization_slug: string
 }
 
 export interface Member {
@@ -487,30 +487,6 @@ export interface OrganizationUsage {
 
 export interface OrganizationUsageLoadMatch {
   organization_slug: string
-}
-
-export interface Rotate {
-}
-
-export interface RotateCreateData {
-  database_name?: string
-  organization_id: string
-  group_name?: string
-}
-
-export interface Token {
-  jwt?: string
-  permissions?: Record<string, any>
-}
-
-export interface TokenCreateData {
-  database_name?: string
-  organization_id: string
-  authorization?: string
-  expiration?: string
-  group_name?: string
-  jwt?: string
-  permissions?: Record<string, any>
 }
 
 export interface User {

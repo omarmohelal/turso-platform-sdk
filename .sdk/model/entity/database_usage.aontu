@@ -50,7 +50,7 @@ main: kit: entity: database_usage: {
               }
               {
                 k: "param"
-                n: "organization_id"
+                n: "organization_slug"
                 or: "organizationSlug"
                 r: true
                 t: "`$STRING`"
@@ -78,13 +78,13 @@ main: kit: entity: database_usage: {
           q: {
             exist: [
               "database_name"
-              "organization_id"
+              "organization_slug"
             ]
           }
           r: {
             param: {
               databaseName: "database_name"
-              organizationSlug: "organization_id"
+              organizationSlug: "organization_slug"
             }
           }
           rs: {
@@ -99,7 +99,7 @@ main: kit: entity: database_usage: {
               lit: "organizations"
             }
             {
-              var: "organization_id"
+              var: "organization_slug"
             }
             {
               lit: "databases"

@@ -18,7 +18,5 @@
 @"./organization_plan.aontu"
 @"./organization_subscription.aontu"
 @"./organization_usage.aontu"
-@"./rotate.aontu"
-@"./token.aontu"
 @"./user.aontu"
 @"./validate.aontu"

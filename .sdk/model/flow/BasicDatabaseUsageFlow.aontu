@@ -15,7 +15,7 @@ main: kit: flow: BasicDatabaseUsageFlow:
 
       m: {
         id: "database_usage01",
-        organization_id: "organization01"
+        organization_slug: "organization_slug01"
       }
 
       o: "load",

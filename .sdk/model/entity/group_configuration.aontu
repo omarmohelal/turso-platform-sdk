@@ -36,7 +36,7 @@ main: kit: entity: group_configuration: {
               }
               {
                 k: "param"
-                n: "organization_id"
+                n: "organization_slug"
                 or: "organizationSlug"
                 r: true
                 t: "`$STRING`"
@@ -48,13 +48,13 @@ main: kit: entity: group_configuration: {
           q: {
             exist: [
               "group_name"
-              "organization_id"
+              "organization_slug"
             ]
           }
           r: {
             param: {
               groupName: "group_name"
-              organizationSlug: "organization_id"
+              organizationSlug: "organization_slug"
             }
           }
           rs: {
@@ -69,7 +69,7 @@ main: kit: entity: group_configuration: {
               lit: "organizations"
             }
             {
-              var: "organization_id"
+              var: "organization_slug"
             }
             {
               lit: "groups"
@@ -111,7 +111,7 @@ main: kit: entity: group_configuration: {
               }
               {
                 k: "param"
-                n: "organization_id"
+                n: "organization_slug"
                 or: "organizationSlug"
                 r: true
                 t: "`$STRING`"
@@ -123,13 +123,13 @@ main: kit: entity: group_configuration: {
           q: {
             exist: [
               "group_name"
-              "organization_id"
+              "organization_slug"
             ]
           }
           r: {
             param: {
               groupName: "group_name"
-              organizationSlug: "organization_id"
+              organizationSlug: "organization_slug"
             }
           }
           rs: {
@@ -144,7 +144,7 @@ main: kit: entity: group_configuration: {
               lit: "organizations"
             }
             {
-              var: "organization_id"
+              var: "organization_slug"
             }
             {
               lit: "groups"

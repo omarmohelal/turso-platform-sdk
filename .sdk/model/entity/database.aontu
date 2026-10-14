@@ -231,6 +231,165 @@ main: kit: entity: database: {
           }
         }
         {
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate"
+          q: {
+            "$action": "rotate"
+            exist: [
+              "database_name"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_slug"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "rotate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "permissions"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_name"
+                or: "databaseName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "full-access"
+                k: "query"
+                n: "authorization"
+                or: "authorization"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "never"
+                k: "query"
+                n: "expiration"
+                or: "expiration"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens"
+          q: {
+            "$action": "token"
+            exist: [
+              "database_name"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              databaseName: "database_name"
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
           bf: [
             "group"
             "name"
@@ -597,6 +756,7 @@ main: kit: entity: database: {
 
 
   relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
     [path("$.main.kit.entity.organization")]
   ]
 

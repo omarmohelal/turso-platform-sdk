@@ -79,7 +79,7 @@ main: kit: entity: database_configuration: {
               }
               {
                 k: "param"
-                n: "organization_id"
+                n: "organization_slug"
                 or: "organizationSlug"
                 r: true
                 t: "`$STRING`"
@@ -91,13 +91,13 @@ main: kit: entity: database_configuration: {
           q: {
             exist: [
               "database_name"
-              "organization_id"
+              "organization_slug"
             ]
           }
           r: {
             param: {
               databaseName: "database_name"
-              organizationSlug: "organization_id"
+              organizationSlug: "organization_slug"
             }
           }
           rs: {
@@ -112,7 +112,7 @@ main: kit: entity: database_configuration: {
               lit: "organizations"
             }
             {
-              var: "organization_id"
+              var: "organization_slug"
             }
             {
               lit: "databases"
@@ -160,7 +160,7 @@ main: kit: entity: database_configuration: {
               }
               {
                 k: "param"
-                n: "organization_id"
+                n: "organization_slug"
                 or: "organizationSlug"
                 r: true
                 t: "`$STRING`"
@@ -172,13 +172,13 @@ main: kit: entity: database_configuration: {
           q: {
             exist: [
               "database_name"
-              "organization_id"
+              "organization_slug"
             ]
           }
           r: {
             param: {
               databaseName: "database_name"
-              organizationSlug: "organization_id"
+              organizationSlug: "organization_slug"
             }
           }
           rs: {
@@ -193,7 +193,7 @@ main: kit: entity: database_configuration: {
               lit: "organizations"
             }
             {
-              var: "organization_id"
+              var: "organization_slug"
             }
             {
               lit: "databases"

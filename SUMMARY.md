@@ -6,7 +6,7 @@ API description here
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 22 entities and 53 HTTP routes. There are 1 SDK targets.
+The selected API surface contains 20 entities and 53 HTTP routes. There are 1 SDK targets.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -42,7 +42,7 @@ Key fields to recognise:
 
 ### Database
 
-Results: Successful response.
+Results: Successful response; Successful response (No Content).
 
 SDK operations: `create`, `list`, `load`, `remove`.
 
@@ -246,23 +246,6 @@ Key fields to recognise:
 - `usage`: The usage object for the organization.
 - `uuid`: The UUID of the organization.
 
-### Rotate
-
-Results: Successful response (No Content).
-
-SDK operations: `create`.
-
-### Token
-
-Results: Successful response.
-
-SDK operations: `create`.
-
-Key fields to recognise:
-
-- `jwt`: The generated authorization token (JWT).
-- `permissions`: The permissions for the token.
-
 ### User
 
 Results: Successful response.
@@ -300,6 +283,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | ApiToken | `remove` | `DELETE /v1/auth/api-tokens/{tokenName}` | See reference |
 | AuditLog | `list` | `GET /v1/organizations/{organizationSlug}/audit-logs` | See reference |
 | Database | `create` | `POST /v3/organizations/{organizationId}/databases/{databaseId}/restore` | See reference |
+| Database | `create` | `POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate` | See reference |
+| Database | `create` | `POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens` | See reference |
 | Database | `create` | `POST /v1/organizations/{organizationSlug}/databases` | See reference |
 | Database | `list` | `GET /v3/organizations/{organizationId}/databases` | See reference |
 | Database | `list` | `GET /v1/organizations/{organizationSlug}/databases` | See reference |
@@ -311,6 +296,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | DatabaseUsage | `load` | `GET /v1/organizations/{organizationSlug}/databases/{databaseName}/usage` | See reference |
 | DeletedGroup | `list` | `GET /v3/organizations/{organizationId}/deleted-groups` | See reference |
 | Group | `create` | `POST /v3/organizations/{organizationId}/groups/{groupId}/restore` | See reference |
+| Group | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate` | See reference |
+| Group | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens` | See reference |
 | Group | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/transfer` | See reference |
 | Group | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/unarchive` | See reference |
 | Group | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/update` | See reference |
@@ -340,10 +327,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | OrganizationPlan | `list` | `GET /v1/organizations/{organizationSlug}/plans` | See reference |
 | OrganizationSubscription | `load` | `GET /v1/organizations/{organizationSlug}/subscription` | See reference |
 | OrganizationUsage | `load` | `GET /v1/organizations/{organizationSlug}/usage` | See reference |
-| Rotate | `create` | `POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate` | See reference |
-| Rotate | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate` | See reference |
-| Token | `create` | `POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens` | See reference |
-| Token | `create` | `POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens` | See reference |
 | User | `load` | `GET /v1/user` | See reference |
 | Validate | `load` | `GET /v1/auth/validate` | See reference |
 

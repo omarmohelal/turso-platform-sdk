@@ -290,6 +290,75 @@ const PLAN: any[] = [
     "accessor": "Database",
     "op": "create",
     "method": "POST",
+    "path": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
+    "action": "rotate",
+    "args": [
+      {
+        "name": "database_name",
+        "wire": "databaseName",
+        "value": "p1"
+      },
+      {
+        "name": "organization_slug",
+        "wire": "organizationSlug",
+        "value": "p2"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [],
+    "status": 200,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "database",
+    "accessor": "Database",
+    "op": "create",
+    "method": "POST",
+    "path": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
+    "action": "token",
+    "args": [
+      {
+        "name": "database_name",
+        "wire": "databaseName",
+        "value": "p1"
+      },
+      {
+        "name": "organization_slug",
+        "wire": "organizationSlug",
+        "value": "p2"
+      }
+    ],
+    "select": {
+      "authorization": "full-access",
+      "expiration": "never"
+    },
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [
+      "expiration",
+      "authorization"
+    ],
+    "queryArgs": [],
+    "auth": [],
+    "status": 200,
+    "sample": {
+      "jwt": "x"
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "database",
+    "accessor": "Database",
+    "op": "create",
+    "method": "POST",
     "path": "/v1/organizations/{organizationSlug}/databases",
     "args": [
       {
@@ -555,7 +624,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -599,7 +668,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -643,7 +712,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -682,7 +751,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -856,6 +925,75 @@ const PLAN: any[] = [
         }
       ],
       "failures": {}
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "group",
+    "accessor": "Group",
+    "op": "create",
+    "method": "POST",
+    "path": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
+    "action": "rotate",
+    "args": [
+      {
+        "name": "group_name",
+        "wire": "groupName",
+        "value": "p1"
+      },
+      {
+        "name": "organization_slug",
+        "wire": "organizationSlug",
+        "value": "p2"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [],
+    "status": 200,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "group",
+    "accessor": "Group",
+    "op": "create",
+    "method": "POST",
+    "path": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
+    "action": "token",
+    "args": [
+      {
+        "name": "group_name",
+        "wire": "groupName",
+        "value": "p1"
+      },
+      {
+        "name": "organization_slug",
+        "wire": "organizationSlug",
+        "value": "p2"
+      }
+    ],
+    "select": {
+      "authorization": "full-access",
+      "expiration": "never"
+    },
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [
+      "expiration",
+      "authorization"
+    ],
+    "queryArgs": [],
+    "auth": [],
+    "status": 200,
+    "sample": {
+      "jwt": "x"
     },
     "idField": "id"
   },
@@ -1145,7 +1283,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -1178,7 +1316,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -1211,7 +1349,7 @@ const PLAN: any[] = [
         "value": "p1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p2"
       }
@@ -1257,7 +1395,7 @@ const PLAN: any[] = [
         "value": "p2"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p3"
       }
@@ -1364,7 +1502,7 @@ const PLAN: any[] = [
         "value": "aws-us-east-1"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p3"
       }
@@ -1440,7 +1578,7 @@ const PLAN: any[] = [
         "value": "p2"
       },
       {
-        "name": "organization_id",
+        "name": "organization_slug",
         "wire": "organizationSlug",
         "value": "p3"
       }
@@ -1981,140 +2119,6 @@ const PLAN: any[] = [
           }
         ]
       }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "rotate",
-    "accessor": "Rotate",
-    "op": "create",
-    "method": "POST",
-    "path": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
-    "args": [
-      {
-        "name": "database_name",
-        "wire": "databaseName",
-        "value": "p1"
-      },
-      {
-        "name": "organization_id",
-        "wire": "organizationSlug",
-        "value": "p2"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [],
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "rotate",
-    "accessor": "Rotate",
-    "op": "create",
-    "method": "POST",
-    "path": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
-    "args": [
-      {
-        "name": "group_name",
-        "wire": "groupName",
-        "value": "p1"
-      },
-      {
-        "name": "organization_id",
-        "wire": "organizationSlug",
-        "value": "p2"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [],
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "token",
-    "accessor": "Token",
-    "op": "create",
-    "method": "POST",
-    "path": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
-    "args": [
-      {
-        "name": "database_name",
-        "wire": "databaseName",
-        "value": "p1"
-      },
-      {
-        "name": "organization_id",
-        "wire": "organizationSlug",
-        "value": "p2"
-      }
-    ],
-    "select": {
-      "authorization": "full-access",
-      "expiration": "never"
-    },
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [
-      "expiration",
-      "authorization"
-    ],
-    "queryArgs": [],
-    "auth": [],
-    "status": 200,
-    "sample": {
-      "jwt": "x"
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "token",
-    "accessor": "Token",
-    "op": "create",
-    "method": "POST",
-    "path": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
-    "args": [
-      {
-        "name": "group_name",
-        "wire": "groupName",
-        "value": "p1"
-      },
-      {
-        "name": "organization_id",
-        "wire": "organizationSlug",
-        "value": "p2"
-      }
-    ],
-    "select": {
-      "authorization": "full-access",
-      "expiration": "never"
-    },
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [
-      "expiration",
-      "authorization"
-    ],
-    "queryArgs": [],
-    "auth": [],
-    "status": 200,
-    "sample": {
-      "jwt": "x"
     },
     "idField": "id"
   },

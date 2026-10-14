@@ -890,6 +890,175 @@
                 },
                 {
                   "a": true,
+                  "co": {
+                    "id": "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "database_name",
+                        "or": "databaseName",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_slug",
+                        "or": "organizationSlug",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
+                  "q": {
+                    "$action": "rotate",
+                    "exist": [
+                      "database_name",
+                      "organization_slug"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "databaseName": "database_name",
+                      "organizationSlug": "organization_slug"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_slug"
+                    },
+                    {
+                      "lit": "databases"
+                    },
+                    {
+                      "var": "database_name"
+                    },
+                    {
+                      "lit": "auth"
+                    },
+                    {
+                      "lit": "rotate"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "bf": [
+                    "permissions"
+                  ],
+                  "co": {
+                    "id": "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "database_name",
+                        "or": "databaseName",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_slug",
+                        "or": "organizationSlug",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "full-access",
+                        "k": "query",
+                        "n": "authorization",
+                        "or": "authorization",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "never",
+                        "k": "query",
+                        "n": "expiration",
+                        "or": "expiration",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
+                  "q": {
+                    "$action": "token",
+                    "exist": [
+                      "database_name",
+                      "organization_slug"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "databaseName": "database_name",
+                      "organizationSlug": "organization_slug"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_slug"
+                    },
+                    {
+                      "lit": "databases"
+                    },
+                    {
+                      "var": "database_name"
+                    },
+                    {
+                      "lit": "auth"
+                    },
+                    {
+                      "lit": "tokens"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
                   "bf": [
                     "group",
                     "name",
@@ -1283,6 +1452,9 @@
             "ancestors": [
               [
                 "$.main.kit.entity.organization"
+              ],
+              [
+                "$.main.kit.entity.organization"
               ]
             ]
           }
@@ -1377,7 +1549,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -1390,13 +1562,13 @@
                   "q": {
                     "exist": [
                       "database_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -1411,7 +1583,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -1463,7 +1635,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -1476,13 +1648,13 @@
                   "q": {
                     "exist": [
                       "database_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -1497,7 +1669,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -1583,7 +1755,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -1596,13 +1768,13 @@
                   "q": {
                     "exist": [
                       "database_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -1617,7 +1789,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -1703,7 +1875,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -1734,13 +1906,13 @@
                   "q": {
                     "exist": [
                       "database_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -1755,7 +1927,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -2087,6 +2259,175 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.group`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "group_name",
+                        "or": "groupName",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_slug",
+                        "or": "organizationSlug",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
+                  "q": {
+                    "$action": "rotate",
+                    "exist": [
+                      "group_name",
+                      "organization_slug"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "groupName": "group_name",
+                      "organizationSlug": "organization_slug"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_slug"
+                    },
+                    {
+                      "lit": "groups"
+                    },
+                    {
+                      "var": "group_name"
+                    },
+                    {
+                      "lit": "auth"
+                    },
+                    {
+                      "lit": "rotate"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "bf": [
+                    "permissions"
+                  ],
+                  "co": {
+                    "id": "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "group_name",
+                        "or": "groupName",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_slug",
+                        "or": "organizationSlug",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "full-access",
+                        "k": "query",
+                        "n": "authorization",
+                        "or": "authorization",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "never",
+                        "k": "query",
+                        "n": "expiration",
+                        "or": "expiration",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
+                  "q": {
+                    "$action": "token",
+                    "exist": [
+                      "group_name",
+                      "organization_slug"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "groupName": "group_name",
+                      "organizationSlug": "organization_slug"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_slug"
+                    },
+                    {
+                      "lit": "groups"
+                    },
+                    {
+                      "var": "group_name"
+                    },
+                    {
+                      "lit": "auth"
+                    },
+                    {
+                      "lit": "tokens"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
                   }
                 },
                 {
@@ -2628,7 +2969,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -2641,13 +2982,13 @@
                   "q": {
                     "exist": [
                       "group_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "groupName": "group_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -2662,7 +3003,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "groups"
@@ -2708,7 +3049,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -2721,13 +3062,13 @@
                   "q": {
                     "exist": [
                       "group_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "groupName": "group_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -2742,7 +3083,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "groups"
@@ -2855,7 +3196,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -2868,13 +3209,13 @@
                   "q": {
                     "exist": [
                       "database_name",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -2889,7 +3230,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -2940,7 +3281,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -2954,14 +3295,14 @@
                     "exist": [
                       "database_name",
                       "id",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "databaseName": "database_name",
                       "instanceName": "id",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -2976,7 +3317,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "databases"
@@ -3339,7 +3680,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -3353,14 +3694,14 @@
                     "exist": [
                       "group_name",
                       "id",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "groupName": "group_name",
                       "location": "id",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -3375,7 +3716,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "groups"
@@ -3465,7 +3806,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "organization_id",
+                        "n": "organization_slug",
                         "or": "organizationSlug",
                         "r": true,
                         "t": "`$STRING`"
@@ -3479,14 +3820,14 @@
                     "exist": [
                       "group_name",
                       "id",
-                      "organization_id"
+                      "organization_slug"
                     ]
                   },
                   "r": {
                     "param": {
                       "groupName": "group_name",
                       "location": "id",
-                      "organizationSlug": "organization_id"
+                      "organizationSlug": "organization_slug"
                     }
                   },
                   "rs": {
@@ -3501,7 +3842,7 @@
                       "lit": "organizations"
                     },
                     {
-                      "var": "organization_id"
+                      "var": "organization_slug"
                     },
                     {
                       "lit": "groups"
@@ -4735,413 +5076,6 @@
             ]
           }
         },
-        "rotate": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": {},
-          "name": "rotate",
-          "op": {
-            "create": {
-              "input": "data",
-              "name": "create",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "database_name",
-                        "or": "databaseName",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organizationSlug",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
-                  "q": {
-                    "exist": [
-                      "database_name",
-                      "organization_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
-                    }
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "databases"
-                    },
-                    {
-                      "var": "database_name"
-                    },
-                    {
-                      "lit": "auth"
-                    },
-                    {
-                      "lit": "rotate"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "group_name",
-                        "or": "groupName",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organizationSlug",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
-                  "q": {
-                    "exist": [
-                      "group_name",
-                      "organization_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "groupName": "group_name",
-                      "organizationSlug": "organization_id"
-                    }
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "groups"
-                    },
-                    {
-                      "var": "group_name"
-                    },
-                    {
-                      "lit": "auth"
-                    },
-                    {
-                      "lit": "rotate"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.organization",
-                "$.main.kit.entity.database"
-              ],
-              [
-                "$.main.kit.entity.organization",
-                "$.main.kit.entity.group"
-              ]
-            ]
-          }
-        },
-        "token": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": {
-            "jwt": {
-              "a": true,
-              "h": "Jwt",
-              "n": "jwt",
-              "r": false,
-              "sh": "The generated authorization token (JWT).",
-              "t": "`$STRING`"
-            },
-            "permissions": {
-              "a": true,
-              "h": "Permissions",
-              "n": "permissions",
-              "r": false,
-              "sh": "The permissions for the token.",
-              "t": "`$OBJECT`"
-            }
-          },
-          "name": "token",
-          "op": {
-            "create": {
-              "input": "data",
-              "name": "create",
-              "points": [
-                {
-                  "a": true,
-                  "bf": [
-                    "permissions"
-                  ],
-                  "co": {
-                    "id": "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "database_name",
-                        "or": "databaseName",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organizationSlug",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "full-access",
-                        "k": "query",
-                        "n": "authorization",
-                        "or": "authorization",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "never",
-                        "k": "query",
-                        "n": "expiration",
-                        "or": "expiration",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
-                  "q": {
-                    "exist": [
-                      "database_name",
-                      "organization_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "databaseName": "database_name",
-                      "organizationSlug": "organization_id"
-                    }
-                  },
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "databases"
-                    },
-                    {
-                      "var": "database_name"
-                    },
-                    {
-                      "lit": "auth"
-                    },
-                    {
-                      "lit": "tokens"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "permissions"
-                  ],
-                  "co": {
-                    "id": "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "group_name",
-                        "or": "groupName",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organizationSlug",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "full-access",
-                        "k": "query",
-                        "n": "authorization",
-                        "or": "authorization",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "never",
-                        "k": "query",
-                        "n": "expiration",
-                        "or": "expiration",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
-                  "q": {
-                    "exist": [
-                      "group_name",
-                      "organization_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "groupName": "group_name",
-                      "organizationSlug": "organization_id"
-                    }
-                  },
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "groups"
-                    },
-                    {
-                      "var": "group_name"
-                    },
-                    {
-                      "lit": "auth"
-                    },
-                    {
-                      "lit": "tokens"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.organization",
-                "$.main.kit.entity.database"
-              ],
-              [
-                "$.main.kit.entity.organization",
-                "$.main.kit.entity.group"
-              ]
-            ]
-          }
-        },
         "user": {
           "active": true,
           "alias": {
@@ -5510,7 +5444,7 @@
               "i": {},
               "m": {
                 "database_name": "database_name01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "list",
               "s": [],
@@ -5526,7 +5460,7 @@
             {
               "a": true,
               "d": {
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "i": {
                 "ref": "database_configuration_ref01",
@@ -5662,7 +5596,7 @@
               "i": {},
               "m": {
                 "database_name": "database_name01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "list",
               "s": [],
@@ -5695,7 +5629,7 @@
               },
               "m": {
                 "id": "database_usage01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "load",
               "s": [],
@@ -5749,7 +5683,7 @@
             {
               "a": true,
               "d": {
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "i": {
                 "ref": "group_configuration_ref01",
@@ -5778,7 +5712,7 @@
               },
               "m": {
                 "id": "group_configuration01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "load",
               "s": [],
@@ -5906,7 +5840,7 @@
               "i": {},
               "m": {
                 "database_name": "database_name01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "list",
               "s": [],
@@ -5930,7 +5864,7 @@
               "m": {
                 "database_name": "database_name01",
                 "id": "instance01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "load",
               "s": [],
@@ -5990,7 +5924,7 @@
               "m": {
                 "group_name": "group_name01",
                 "location": "location01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "create",
               "s": [],
@@ -6026,7 +5960,7 @@
               "m": {
                 "group_name": "group_name01",
                 "id": "location01",
-                "organization_id": "organization01"
+                "organization_slug": "organization_slug01"
               },
               "o": "remove",
               "s": [],
@@ -6310,54 +6244,6 @@
             }
           ]
         },
-        "BasicRotateFlow": {
-          "active": true,
-          "entity": "rotate",
-          "key$": "BasicRotateFlow",
-          "kind": "basic",
-          "name": "BasicRotateFlow",
-          "param": {},
-          "step": [
-            {
-              "a": true,
-              "d": {},
-              "i": {
-                "ref": "rotate_ref01"
-              },
-              "m": {
-                "group_name": "group_name01",
-                "organization_id": "organization01"
-              },
-              "o": "create",
-              "s": [],
-              "v": []
-            }
-          ]
-        },
-        "BasicTokenFlow": {
-          "active": true,
-          "entity": "token",
-          "key$": "BasicTokenFlow",
-          "kind": "basic",
-          "name": "BasicTokenFlow",
-          "param": {},
-          "step": [
-            {
-              "a": true,
-              "d": {},
-              "i": {
-                "ref": "token_ref01"
-              },
-              "m": {
-                "group_name": "group_name01",
-                "organization_id": "organization01"
-              },
-              "o": "create",
-              "s": [],
-              "v": []
-            }
-          ]
-        },
         "BasicUserFlow": {
           "active": true,
           "entity": "user",
@@ -6501,13 +6387,13 @@
         }
       },
       "publisher": {
-        "name": "",
-        "security": "",
-        "url": ""
+        "name": "Omar Mohelal",
+        "security": "https://github.com/omarmohelal/turso-platform-sdk/security/advisories/new",
+        "url": "https://github.com/omarmohelal"
       },
       "repo": {
         "host": "github.com",
-        "path": ""
+        "path": "omarmohelal/turso-platform-sdk"
       },
       "target": {
         "ts": {
@@ -6562,7 +6448,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@omarmohelal/turso-platform-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {
@@ -6602,14 +6488,14 @@
       },
       "text": {
         "about_md": "",
-        "docs_url": "",
+        "docs_url": "https://docs.turso.tech/api-reference/introduction",
         "entity_desc": {},
         "homepage": "",
         "meta_source": "",
-        "summary": "",
-        "tagline": "",
+        "summary": "Manage Turso databases, groups, organizations and Platform API tokens.",
+        "tagline": "Unofficial TypeScript client for the Turso Platform API.",
         "title": "",
-        "website": ""
+        "website": "https://turso.tech"
       }
     }
   },

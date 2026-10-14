@@ -65,6 +65,16 @@
       "version": 2,
       "source": "openapi3"
     },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /v1/organizations/{organizationSlug}/groups/{groupName}/transfer": {
       "provenance": "operation-contract",
       "version": 2,

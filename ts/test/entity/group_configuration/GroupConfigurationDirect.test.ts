@@ -43,21 +43,21 @@ describe('GroupConfigurationDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-group_configuration', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["group_name01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["group_name01","organization_slug01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
       params.group_name = setup.idmap['group_name01']
-      params.organization_id = setup.idmap['organization01']
+      params.organization_slug = setup.idmap['organization_slug01']
     } else {
       params.group_name = 'direct01'
-      params.organization_id = 'direct02'
+      params.organization_slug = 'direct02'
     }
 
     const result: any = await client.direct({
-      path: 'v1/organizations/{organization_id}/groups/{group_name}/configuration',
+      path: 'v1/organizations/{organization_slug}/groups/{group_name}/configuration',
       method: 'GET',
       params,
       query,

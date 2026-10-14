@@ -21,6 +21,7 @@
         "remote_encryption": {},
         "seed": {},
         "size_limit": "sd0",
+        "database_name": "DATABASE_NAME01",
         "organization_slug": "ORGANIZATION_SLUG01"
       },
       "DATABASE01": {
@@ -43,6 +44,7 @@
         "remote_encryption": {},
         "seed": {},
         "size_limit": "s18e",
+        "database_name": "DATABASE_NAME01",
         "organization_slug": "ORGANIZATION_SLUG01"
       },
       "DATABASE02": {
@@ -65,6 +67,7 @@
         "remote_encryption": {},
         "seed": {},
         "size_limit": "s24c",
+        "database_name": "DATABASE_NAME01",
         "organization_slug": "ORGANIZATION_SLUG01"
       }
     }
@@ -95,6 +98,16 @@
   },
   "requests": {
     "POST /v3/organizations/{organizationId}/databases/{databaseId}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -18,8 +18,6 @@ import { OrganizationInvoiceEntity } from './entity/OrganizationInvoiceEntity'
 import { OrganizationPlanEntity } from './entity/OrganizationPlanEntity'
 import { OrganizationSubscriptionEntity } from './entity/OrganizationSubscriptionEntity'
 import { OrganizationUsageEntity } from './entity/OrganizationUsageEntity'
-import { RotateEntity } from './entity/RotateEntity'
-import { TokenEntity } from './entity/TokenEntity'
 import { UserEntity } from './entity/UserEntity'
 import { ValidateEntity } from './entity/ValidateEntity'
 
@@ -499,24 +497,6 @@ class TursoPlatformSDK {
   OrganizationUsage(entopts?: Record<string, any>) {
     const self = this
     return new OrganizationUsageEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Rotate().list()` / `client.Rotate().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Rotate(entopts?: Record<string, any>) {
-    const self = this
-    return new RotateEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.Token().list()` / `client.Token().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  Token(entopts?: Record<string, any>) {
-    const self = this
-    return new TokenEntity(self, entopts)
   }
 
 

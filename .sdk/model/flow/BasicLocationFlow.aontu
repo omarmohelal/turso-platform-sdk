@@ -14,7 +14,7 @@ main: kit: flow: BasicLocationFlow:
       m: {
         group_name: "group_name01",
         location: "location01",
-        organization_id: "organization01"
+        organization_slug: "organization_slug01"
       }
 
       o: "create"
@@ -47,7 +47,7 @@ main: kit: flow: BasicLocationFlow:
       m: {
         group_name: "group_name01",
         id: "location01",
-        organization_id: "organization01"
+        organization_slug: "organization_slug01"
       }
 
       o: "remove"

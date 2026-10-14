@@ -5,4 +5,57 @@
 @"./base-guide.aontu"
 
 
+# Corrections to the inferred model. Each one is described in DX-REPORT.md.
 
+
+# 1. Rotating credentials and minting tokens are operations ON a database or
+# a group. The base guide made `rotate` and `token` entities of their own, each
+# serving both parents, so a call only worked if you guessed which path
+# parameter selects the route (the generated README examples did not).
+# Model them as actions instead, the way the base guide already treats
+# /transfer and /unarchive.
+
+guide: entity: rotate: active: false
+guide: entity: token: active: false
+
+guide: entity: database: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate": {
+  action: rotate: {}
+  rename: param: databaseName: database_name
+  rename: param: organizationSlug: organization_slug
+  op: create: method: POST
+}
+
+guide: entity: database: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens": {
+  action: token: {}
+  rename: param: databaseName: database_name
+  rename: param: organizationSlug: organization_slug
+  op: create: method: POST
+}
+
+guide: entity: group: path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate": {
+  action: rotate: {}
+  rename: param: groupName: group_name
+  rename: param: organizationSlug: organization_slug
+  op: create: method: POST
+}
+
+guide: entity: group: path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens": {
+  action: token: {}
+  rename: param: groupName: group_name
+  rename: param: organizationSlug: organization_slug
+  op: create: method: POST
+}
+
+
+# 2. {organizationSlug} is the organization's slug everywhere in the v1 API.
+# The base guide calls it organization_slug on some entities and
+# organization_id on nested ones, and organization_id is also the name it
+# gives the v3 {organizationId}, which is a different value. Use one name.
+
+guide: entity: database_configuration: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration": rename: param: organizationSlug: organization_slug
+guide: entity: database_stat: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/stats": rename: param: organizationSlug: organization_slug
+guide: entity: database_usage: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage": rename: param: organizationSlug: organization_slug
+guide: entity: group_configuration: path: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration": rename: param: organizationSlug: organization_slug
+guide: entity: instance: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances": rename: param: organizationSlug: organization_slug
+guide: entity: instance: path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}": rename: param: organizationSlug: organization_slug
+guide: entity: location: path: "/v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}": rename: param: organizationSlug: organization_slug

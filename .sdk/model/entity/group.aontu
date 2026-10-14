@@ -161,6 +161,165 @@ main: kit: entity: group: {
           }
         }
         {
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate"
+          q: {
+            "$action": "rotate"
+            exist: [
+              "group_name"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_slug"
+            }
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "rotate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "permissions"
+          ]
+          co: {
+            id: "POST /v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_name"
+                or: "groupName"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_slug"
+                or: "organizationSlug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "full-access"
+                k: "query"
+                n: "authorization"
+                or: "authorization"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "never"
+                k: "query"
+                n: "expiration"
+                or: "expiration"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens"
+          q: {
+            "$action": "token"
+            exist: [
+              "group_name"
+              "organization_slug"
+            ]
+          }
+          r: {
+            param: {
+              groupName: "group_name"
+              organizationSlug: "organization_slug"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_slug"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_name"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
           bf: [
             "organization"
           ]

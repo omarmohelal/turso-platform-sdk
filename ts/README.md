@@ -1,6 +1,6 @@
 # TursoPlatform TypeScript SDK
 
-
+Unofficial TypeScript client for the Turso Platform API.
 
 The TypeScript SDK for the TursoPlatform API — a type-safe, entity-oriented client with full async/await support.
 
@@ -12,11 +12,11 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/turso-platform-sdk/tags)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/omarmohelal/turso-platform-sdk/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
-git clone https://github.com/voxgig-sdk/turso-platform-sdk
+git clone https://github.com/omarmohelal/turso-platform-sdk
 npm install ./turso-platform-sdk/ts
 ```
 
@@ -29,7 +29,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TursoPlatformSDK } from '@voxgig-sdk/turso-platform-sdk'
+import { TursoPlatformSDK } from '@omarmohelal/turso-platform-sdk'
 
 const client = new TursoPlatformSDK({
   apikey: process.env.TURSO_PLATFORM_APIKEY,
@@ -88,7 +88,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const databaseusage = await client.DatabaseUsage().load({ database_name: "example", organization_id: "example" })
+  const databaseusage = await client.DatabaseUsage().load({ database_name: "example", organization_slug: "example" })
   console.log(databaseusage.data())
 } catch (err) {
   console.error('load failed:', err)
@@ -153,7 +153,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = TursoPlatformSDK.test()
 
-const databaseusage = await client.DatabaseUsage().load({ database_name: 'example_database_name', organization_id: 'example_organization_id' })
+const databaseusage = await client.DatabaseUsage().load({ database_name: 'example_database_name', organization_slug: 'example_organization_slug' })
 // databaseusage is the DatabaseUsage entity; .data() reads its mock record
 console.log(databaseusage.data())
 ```
@@ -173,7 +173,7 @@ Entity instances remember their last match and data:
 const entity = client.DatabaseUsage()
 
 // First call runs the operation and stores its result
-await entity.load({ database_name: 'example_database_name', organization_id: 'example_organization_id' })
+await entity.load({ database_name: 'example_database_name', organization_slug: 'example_organization_slug' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -275,8 +275,6 @@ new TursoPlatformSDK(options?: {
 | `OrganizationPlan(data?)` | `OrganizationPlanEntity` | Create an OrganizationPlan entity instance. |
 | `OrganizationSubscription(data?)` | `OrganizationSubscriptionEntity` | Create an OrganizationSubscription entity instance. |
 | `OrganizationUsage(data?)` | `OrganizationUsageEntity` | Create an OrganizationUsage entity instance. |
-| `Rotate(data?)` | `RotateEntity` | Create a Rotate entity instance. |
-| `Token(data?)` | `TokenEntity` | Create a Token entity instance. |
 | `User(data?)` | `UserEntity` | Create an User entity instance. |
 | `Validate(data?)` | `ValidateEntity` | Create a Validate entity instance. |
 | `tester(testopts?, sdkopts?)` | `TursoPlatformSDK` | Create a test-mode client instance. |
@@ -628,26 +626,6 @@ Operations: load.
 
 API path: `/v1/organizations/{organizationSlug}/usage`
 
-#### Rotate
-
-| Field | Description |
-| --- | --- |
-
-Operations: create.
-
-API path: `/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate`
-
-#### Token
-
-| Field | Description |
-| --- | --- |
-| `jwt` | The generated authorization token (JWT). |
-| `permissions` | The permissions for the token. |
-
-Operations: create.
-
-API path: `/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens`
-
 #### User
 
 | Field | Description |
@@ -832,7 +810,7 @@ Create an instance: `const database_configuration = client.DatabaseConfiguration
 #### Example: List
 
 ```ts
-const database_configurations = await client.DatabaseConfiguration().list({ database_name: "example", organization_id: "example" })
+const database_configurations = await client.DatabaseConfiguration().list({ database_name: "example", organization_slug: "example" })
 ```
 
 
@@ -857,7 +835,7 @@ Create an instance: `const database_stat = client.DatabaseStat()`
 #### Example: List
 
 ```ts
-const database_stats = await client.DatabaseStat().list({ database_name: "example", organization_id: "example" })
+const database_stats = await client.DatabaseStat().list({ database_name: "example", organization_slug: "example" })
 ```
 
 
@@ -882,7 +860,7 @@ Create an instance: `const database_usage = client.DatabaseUsage()`
 #### Example: Load
 
 ```ts
-const database_usage = await client.DatabaseUsage().load({ database_name: 'database_name', organization_id: 'organization_id' })
+const database_usage = await client.DatabaseUsage().load({ database_name: 'database_name', organization_slug: 'organization_slug' })
 ```
 
 
@@ -981,7 +959,7 @@ Create an instance: `const group_configuration = client.GroupConfiguration()`
 #### Example: Load
 
 ```ts
-const group_configuration = await client.GroupConfiguration().load({ group_name: 'group_name', organization_id: 'organization_id' })
+const group_configuration = await client.GroupConfiguration().load({ group_name: 'group_name', organization_slug: 'organization_slug' })
 ```
 
 
@@ -1010,13 +988,13 @@ Create an instance: `const instance = client.Instance()`
 #### Example: Load
 
 ```ts
-const instance = await client.Instance().load({ id: 'instance_id', database_name: 'database_name', organization_id: 'organization_id' })
+const instance = await client.Instance().load({ id: 'instance_id', database_name: 'database_name', organization_slug: 'organization_slug' })
 ```
 
 #### Example: List
 
 ```ts
-const instances = await client.Instance().list({ database_name: "example", organization_id: "example" })
+const instances = await client.Instance().list({ database_name: "example", organization_slug: "example" })
 ```
 
 
@@ -1089,7 +1067,7 @@ const location = await client.Location().load({ id: 'location_id' })
 const location = await client.Location().create({
   group_name: 'example_group_name',
   id: 'example_id',
-  organization_id: 'example_organization_id',
+  organization_slug: 'example_organization_slug',
 })
 ```
 
@@ -1277,51 +1255,6 @@ const organization_usage = await client.OrganizationUsage().load({ organization_
 ```
 
 
-### Rotate
-
-Create an instance: `const rotate = client.Rotate()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-
-#### Example: Create
-
-```ts
-const rotate = await client.Rotate().create({
-  organization_id: 'example_organization_id',
-})
-```
-
-
-### Token
-
-Create an instance: `const token = client.Token()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `jwt` | `string` | The generated authorization token (JWT). |
-| `permissions` | `Record<string, any>` | The permissions for the token. |
-
-#### Example: Create
-
-```ts
-const token = await client.Token().create({
-  organization_id: 'example_organization_id',
-})
-```
-
-
 ### User
 
 Create an instance: `const user = client.User()`
@@ -1456,7 +1389,7 @@ turso-platform/
 Import the SDK from the package root:
 
 ```ts
-import { TursoPlatformSDK } from '@voxgig-sdk/turso-platform-sdk'
+import { TursoPlatformSDK } from '@omarmohelal/turso-platform-sdk'
 ```
 
 ### Entity state
@@ -1467,7 +1400,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const databaseusage = client.DatabaseUsage()
-await databaseusage.load({ database_name: "example", organization_id: "example" })
+await databaseusage.load({ database_name: "example", organization_slug: "example" })
 
 // databaseusage.data() now returns the databaseusage data from the last `load`
 // databaseusage.match() returns the last match criteria

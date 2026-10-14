@@ -16,7 +16,7 @@
         "uuid": "s8d",
         "version": "s8e",
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       },
       "LOCATION01": {
         "awsapnortheast1": "s104",
@@ -33,7 +33,7 @@
         "uuid": "s10f",
         "version": "s110",
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       },
       "LOCATION02": {
         "awsapnortheast1": "s186",
@@ -50,7 +50,7 @@
         "uuid": "s191",
         "version": "s192",
         "group_name": "GROUP_NAME01",
-        "organization_id": "ORGANIZATION01"
+        "organization_slug": "ORGANIZATION_SLUG01"
       }
     }
   },
