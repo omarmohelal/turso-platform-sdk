@@ -4,6 +4,6 @@
   "scripts": {
     "test": "node --test \"*.test.ts\"",
     "typecheck": "node ../ts/node_modules/typescript/bin/tsc -p .",
-    "summary": "node --env-file=.env.local org-summary.ts"
+    "summary": "node --env-file-if-exists=.env.local org-summary.ts"
   }
 }

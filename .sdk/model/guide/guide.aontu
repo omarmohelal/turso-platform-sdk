@@ -5,15 +5,15 @@
 @"./base-guide.aontu"
 
 
-# Corrections to the inferred model. Each one is described in DX-REPORT.md.
+# Corrections to the inferred model.
 
 
-# 1. Rotating credentials and minting tokens are operations ON a database or
-# a group. The base guide made `rotate` and `token` entities of their own, each
-# serving both parents, so a call only worked if you guessed which path
-# parameter selects the route (the generated README examples did not).
-# Model them as actions instead, the way the base guide already treats
-# /transfer and /unarchive.
+# Finding 2 in DX-REPORT.md. Rotating credentials and minting tokens are
+# operations ON a database or a group. The base guide made `rotate` and `token`
+# entities of their own, each serving both parents, so a call only worked if
+# you guessed which path parameter selects the route (the generated README
+# examples did not). Model them as actions instead, the way the base guide
+# already treats /transfer and /unarchive.
 
 guide: entity: rotate: active: false
 guide: entity: token: active: false
@@ -47,7 +47,8 @@ guide: entity: group: path: "/v1/organizations/{organizationSlug}/groups/{groupN
 }
 
 
-# 2. {organizationSlug} is the organization's slug everywhere in the v1 API.
+# Finding 1 in DX-REPORT.md. {organizationSlug} is the organization's slug
+# everywhere in the v1 API.
 # The base guide calls it organization_slug on some entities and
 # organization_id on nested ones, and organization_id is also the name it
 # gives the v3 {organizationId}, which is a different value. Use one name.

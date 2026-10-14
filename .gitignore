@@ -16,3 +16,6 @@ logs/
 # Editor
 *~
 *.swp
+
+# Generator bookkeeping (jostraca run state)
+.jostraca/

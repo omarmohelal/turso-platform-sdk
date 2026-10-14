@@ -11,15 +11,20 @@ answered 14 of 15 read-only operations against the live API (the 15th was a 403 
 
 Six findings below are new as far as I could tell: for each one I searched the voxgig/sdkgen,
 apidef and create-sdkgen issues by keyword (voxgig/docgen as well for finding 4) and found no
-existing report. Related issues are linked where they exist. The ones with the most developer
-impact:
+existing report. Related issues are linked where they exist. The three with the most developer
+impact are in bold below.
 
-- Path parameters are sent in the JSON request body, including on endpoints that take no body
-  (finding 3).
-- The TypeScript type for `Database().list()` only has the parameters of one of its two routes, so
-  the everyday call does not type-check (finding 6).
-- A slug path parameter is renamed `organization_id` on nested entities, the same name the SDK uses
-  for a real organization ID elsewhere (finding 1).
+## Findings at a glance
+
+| # | Finding | Severity | Status in this repo |
+|---|---|---|---|
+| [1](#1-a-slug-path-parameter-is-renamed-organization_id-on-nested-entities) | **Slug path parameter renamed `organization_id` on nested entities** | Medium | Corrected in `guide.aontu` |
+| [2](#2-a-verb-behind-a-static-segment-becomes-its-own-entity-and-the-readme-examples-fail) | `/auth/rotate` and `/auth/tokens` become entities; generated README examples fail | Medium | Corrected in `guide.aontu` |
+| [3](#3-path-parameters-are-sent-in-the-json-request-body) | **Path parameters sent in the JSON request body** | High | Open; no workaround without editing generated code |
+| [4](#4-root-files-assume-the-default-targets-and-publisher) | CHANGELOG and SECURITY text assume default targets and publisher | Low | Root files maintained by hand |
+| [5](#5-the-offline-mock-filters-list-by-parent-for-some-entities-only) | Offline mock filters `list()` by parent for some entities only | Low | Open; tests seed the parent field |
+| [6](#6-typescript-types-for-operations-with-several-routes) | **TypeScript types cover only one route of a multi-route operation** | Medium | Open; `as any` on the affected calls |
+| K1–K3 | Windows scaffold and include paths, orphan flow files | — | Already reported upstream; linked |
 
 ## Environment and versions
 
@@ -191,7 +196,9 @@ name in SECURITY.md.
 by hand and removed the summary edition with `voxgig-sdkgen edition remove summary` (which removed
 the model files but left the generated `SUMMARY.md` behind). With the root files hand-maintained, I
 also cut the generated `ci.yml` (24 jobs, one per bundled language, each skipping itself when its
-directory is absent) down to the one job this repository needs.
+directory is absent) down to the one job this repository needs, and removed the root `Makefile`
+(release recipes for Voxgig's own tooling), `AGENTS.md` and `CLAUDE.md`, which stopped matching the
+repository once they were no longer regenerated. `ts/AGENTS.md` is still generated.
 
 ### 5. The offline mock filters `list()` by parent for some entities only
 
@@ -244,6 +251,11 @@ example.
 - Response fields are all optional in the generated types (open:
   [sdkgen#269](https://github.com/voxgig/sdkgen/issues/269)); the example handles `undefined` names
   when sorting.
+- The generated root `AGENTS.md` tells coding agents that "`generate` **merges** into existing files"
+  and "Regeneration never DELETES". With sdkgen 4.34.5, regeneration deleted
+  `ts/src/entity/RotateEntity.ts` once the guide switched that entity off (commit `b63d4b9`) and
+  recorded it in `.sdk/log/generated.jsonl`. That matches sdkgen's own design note
+  (`docs/explanation/regeneration-overwrite.md` in voxgig/sdkgen), not the agent guide.
 
 ## What worked well
 
@@ -274,7 +286,7 @@ example.
 | Example types | `cd examples && npm run typecheck` (strict) | 0 errors |
 | Request shape | fake `fetch` probes | Correct method, URL and Bearer header on 10 calls; bodies as described in finding 3 |
 | Fresh clone | clone from GitHub into an empty folder, then all of the above | Same results |
-| CI on Linux | `ci.yml` on a self-hosted runner ([run](https://github.com/omarmohelal/turso-platform-sdk/actions/runs/38571446509)) | All 7 steps passed (install, offline suite, example type-check, example tests) |
+| CI on Linux | `ci.yml` on a self-hosted runner ([run](https://github.com/omarmohelal/turso-platform-sdk/actions/runs/38571446509)) | All steps passed (checkout, setup-node, install, offline suite, example type-check, example tests) |
 | Live, read-only | `cd examples && npm run summary`, plus a GET-only sweep | See below |
 
 ### Live check (read-only)
@@ -325,7 +337,13 @@ fact-checked the README and this report against the repository and the logs.
 
 | | Minutes |
 |---|---|
-| My active time, all of the above (my estimate) | about 20 |
-| Agent runtime, unattended | research: two agents in parallel, 12.5 and 22.5 min; build, tests, report, review and live check: about 90 min (13:27–15:00) |
+| My active time, all of the above (a rough estimate; I did not time it) | about 40 |
+| Agent: research (two agents in parallel) | 12.5 and 22.5 |
+| Agent: build, tests, report, review and live check (13:27–15:00) | about 90 |
+| Agent: final checks, CI and cleanup | about 60 |
 
-That is inside the 30-minute limit. Elapsed time from the brief to this report was about three hours, most of it the agent working while I was away.
+That is over the 30-minute box. About 20 minutes went into choosing the API, the scope and the
+reviews; the rest went into account setup (the Turso CLI token, the GitHub repository) and getting
+CI to run despite a billing restriction on my GitHub account, which meant setting up a self-hosted
+runner. Elapsed time from the brief to the final commit was about four and a half hours, most of it
+the agent working while I was away.

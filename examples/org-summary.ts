@@ -1,10 +1,10 @@
 // Read-only overview of a Turso organization: who the token belongs to,
 // which databases exist (with their group and regions), and which groups exist.
 //
-//   cd examples && node --env-file=.env.local org-summary.ts
+//   cd examples && npm run summary
 //
-// Needs TURSO_PLATFORM_APIKEY and TURSO_PLATFORM_ORG. Sends three GET requests
-// and changes nothing in the organization.
+// Needs TURSO_PLATFORM_APIKEY and TURSO_PLATFORM_ORG, from examples/.env.local or
+// the environment. Sends three GET requests and changes nothing in the organization.
 
 import { TursoPlatformSDK } from '../ts/dist/TursoPlatformSDK.js'
 
