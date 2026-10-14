@@ -25,7 +25,7 @@ databases, groups, tokens and members.
 | Live check against api.turso.tech | Read-only, 2026-10-14: 15 entity operations called with GET, 14 succeeded, 1 returned 403 from Turso ([details](./DX-REPORT.md#verification)) |
 | Writes against the live API | Not tested |
 | Python, Go and other languages | Not generated |
-| CI (`.github/workflows/ci.yml`) | Offline suite and example on Linux, started by hand; not run on GitHub yet |
+| CI (`.github/workflows/ci.yml`) | [Passed](https://github.com/omarmohelal/turso-platform-sdk/actions/runs/38571446509) on a self-hosted Linux runner (Ubuntu 24.04 in WSL, Node 24.21), started by hand. GitHub-hosted runners have not run it: they are blocked by a billing restriction on my GitHub account |
 
 **Start here:** the [developer experience report](./DX-REPORT.md). Its first screen is a short
 summary; the rest has the reproduction steps, evidence and limits for each finding.

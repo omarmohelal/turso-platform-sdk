@@ -52,6 +52,7 @@ impact:
 | 14:22 | Re-ran doctor, generate and tests after those changes | Root-README gate failed on my hand-written snippets (finding 6); fixed the snippets |
 | 14:30 | Final run | 372 tests: 344 pass, 0 fail, 28 skipped; doctor clean |
 | 14:52–14:57 | Read-only live check against api.turso.tech (fresh free account) | 15 entity operations with GET: 14 OK, 1 × 403 |
+| 16:24–16:26 | CI workflow on a self-hosted runner (Ubuntu 24.04.5 in WSL, Node 24.21.0) | All steps passed |
 
 ## Findings
 
@@ -272,6 +273,8 @@ example.
 | Example tests | `cd examples && npm test` | 2 tests, 2 pass |
 | Example types | `cd examples && npm run typecheck` (strict) | 0 errors |
 | Request shape | fake `fetch` probes | Correct method, URL and Bearer header on 10 calls; bodies as described in finding 3 |
+| Fresh clone | clone from GitHub into an empty folder, then all of the above | Same results |
+| CI on Linux | `ci.yml` on a self-hosted runner ([run](https://github.com/omarmohelal/turso-platform-sdk/actions/runs/38571446509)) | All 7 steps passed (install, offline suite, example type-check, example tests) |
 | Live, read-only | `cd examples && npm run summary`, plus a GET-only sweep | See below |
 
 ### Live check (read-only)
@@ -304,8 +307,8 @@ error (`list: request: 403: Forbidden`).
   `fetch` and the type checker, not against Turso.
 - Live list responses with records for databases and groups (the account has none).
 - Python, Go and the other targets (not generated). CLI and MCP surfaces (not generated).
-- The CI workflow has not run on GitHub yet, so the suite has only been run on Windows, not on Linux
-  or macOS.
+- GitHub-hosted runners: the workflow has not run on them, because a billing restriction on my GitHub
+  account blocks hosted jobs. It ran on a self-hosted Linux runner instead. macOS was not tested.
 
 ## Human time and how I worked
 
